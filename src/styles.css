@@ -1,1 +1,125 @@
 /* You can add global styles to this file, and also import other style files */
+
+.container-fluid{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 18px;
+    background: #efefef;
+  }
+
+
+  
+label {
+    margin-bottom: 0px !important;
+    font-size: 15px;
+  }
+  .form-group {
+    margin: 4px 0px !important;
+    position: relative;
+  }
+    .form-group:hover {
+      background: #D5D8DC;
+    }
+    .modal .form-group:hover {
+      background: transparent;
+    }
+  .container-fluid .form-control {
+     border-radius: 0;
+    border-color: #9c9c9c;
+    width: inherit;
+    padding: 2px;
+    line-height: 1;
+    font-size: 14px;
+    height: inherit;
+  }
+  .form-text {
+    margin-top: 0;
+  }
+  select.form-control:not([size]):not([multiple]) {
+    height: inherit;
+  }
+  .container-fluid .form-group:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+
+  .form-group label, .form-group .form-check {
+      float: left;
+    }
+    .container-fluid .form-group .form-check label {
+      float: none;
+    }
+    .container-fluid .form-group label {
+      width: 50%;
+    }
+    
+    .container-fluid .form-group .form-control {
+      width: 50%;
+    }
+
+  
+  .input-group {
+    width: inherit !important;
+  }  
+  .units{
+      background: white;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      border-radius: 0;
+      padding-right: .25rem;
+      padding-left: .25rem;
+      border-color: #9c9c9c;
+      border-top: solid;
+      border-width: 1px;
+      margin-bottom: 0px;
+      border-style: inset;
+      box-shadow: none;
+      border-left: none;
+        color: #a9a9a9;
+          font-size: 14px;
+               left: 0px;
+       right: 0px;
+       top: 0px;
+       position: inherit;
+   }
+  
+   .disabled .units{
+     background-color: #eceeef;
+   }
+  
+
+   .group-label{
+    border-bottom: #BF3D00 groove 2px;
+    width: 100%;
+    /* font-size: large; */
+    /* margin: 10px 0 0px 10px; */
+    font-size: 15px;
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 4px;
+   }
+
+   .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.help-info .hr-spacer{
+    border: groove 1px;
+    width: 100%;
+}
+
+
+.help-info td,.help-info th{
+    font-size: small;
+    padding: 3px !important;
+}
+
+.help-info td{
+    border-right: solid 1px darkgray;
+    border-left: solid 1px darkgray;
+}
+
+.help-info tbody{
+    box-shadow: 0 4px 8px 0 grey 
+}

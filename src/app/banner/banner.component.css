@@ -1,0 +1,15 @@
+.bg-phast{
+    background-color: #BF3D00;
+}
+
+.icon-img{
+    height: 70px;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.navbar-brand{
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 4px;
+}

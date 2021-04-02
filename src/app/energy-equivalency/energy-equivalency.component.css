@@ -1,4 +1,4 @@
-.results-box {
+/* .results-box {
     border: solid;
     border-radius: 10px;
     border-color: #BF3D00
@@ -19,4 +19,20 @@
 
 .btn-form {
     border-radius: 4px !important;
-}
+} */
+
+
+
+
+.modification {
+    background: #fff;
+    -webkit-box-shadow: 0px 0px 69px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 69px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 69px -1px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+
+  .scroll-item{
+      max-height: 100% impo !important;
+      overflow-y: auto;
+  }

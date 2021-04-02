@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { EnergyEquivalencyModule } from './energy-equivalency/energy-equivalency.module';
+import { BannerComponent } from './banner/banner.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
