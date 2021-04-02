@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { EnergyEquivalencyElectric, EnergyEquivalencyFuel } from '../models/energyEquivalency';
+import { EnergyEquivalencyElectric, EnergyEquivalencyFuel } from '../../models/energyEquivalency';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class EnergyEquivalencyService {
 
   electricData: BehaviorSubject<EnergyEquivalencyElectric>;

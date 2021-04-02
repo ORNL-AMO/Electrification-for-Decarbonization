@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EnergyEquivalencyService } from '../energy-equivalency.service';
+import { EnergyEquivalencyService } from '../services/energy-equivalency.service';
 
 @Component({
   selector: 'app-energy-equivalency-help',

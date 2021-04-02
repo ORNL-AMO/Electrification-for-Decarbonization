@@ -8,14 +8,14 @@
                 onfocus="this.select();" (focus)="focusField('electricallyHeatedEfficiencyFuel')">
             <span class="input-group-addon units">%</span>
         </div>
-        <span class="alert-danger pull-right small"
+        <div class="alert-danger small"
             *ngIf="form.controls.electricallyHeatedEfficiency.invalid && !form.controls.electricallyHeatedEfficiency.pristine">
             <span *ngIf="form.controls.electricallyHeatedEfficiency.errors.required">Value required.</span>
             <span *ngIf="form.controls.electricallyHeatedEfficiency.errors.min">Value cannot not be lower than
-                {{form.controls.electricallyHeatedEfficiency.errors.min.min}}.</span>
+                {{form.controls.electricallyHeatedEfficiency.errors.min.min}} %.</span>
             <span *ngIf="form.controls.electricallyHeatedEfficiency.errors.max">Value cannot not be greater than
-                {{form.controls.electricallyHeatedEfficiency.errors.max.max}}.</span>
-        </span>
+                {{form.controls.electricallyHeatedEfficiency.errors.max.max}} %.</span>
+        </div>
     </div>
     <div class="form-group">
         <label for="fuelFiredEfficiency2">Fuel-Fired Equipment Efficiency</label>
@@ -25,14 +25,14 @@
                 (focus)="focusField('fuelFiredEfficiencyFuel')">
             <span class="input-group-addon units">%</span>
         </div>
-        <span class="alert-danger pull-right small"
+        <div class="alert-danger small"
             *ngIf="form.controls.fuelFiredEfficiency.invalid && !form.controls.fuelFiredEfficiency.pristine">
             <span *ngIf="form.controls.fuelFiredEfficiency.errors.required">Value required.</span>
             <span *ngIf="form.controls.fuelFiredEfficiency.errors.min">Value cannot not be lower than
-                {{form.controls.fuelFiredEfficiency.errors.min.min}}.</span>
+                {{form.controls.fuelFiredEfficiency.errors.min.min}} %.</span>
             <span *ngIf="form.controls.fuelFiredEfficiency.errors.max">Value cannot not be greater than
-                {{form.controls.fuelFiredEfficiency.errors.max.max}}.</span>
-        </span>
+                {{form.controls.fuelFiredEfficiency.errors.max.max}} %.</span>
+        </div>
     </div>
     <div class="form-group">
         <label for="electricalHeatInput3">Heat Input for Electrically Heated Equipment</label>
@@ -42,26 +42,20 @@
                 (focus)="focusField('electricalHeatInput')">
             <span class="input-group-addon units">kW</span>
         </div>
-        <span class="alert-danger pull-right small"
+        <div class="alert-danger small"
             *ngIf="form.controls.electricalHeatInput.invalid && !form.controls.electricalHeatInput.pristine">
             <span *ngIf="form.controls.electricalHeatInput.errors.required">Value required.</span>
             <span *ngIf="form.controls.electricalHeatInput.errors.min">Value cannot not be lower than
-                {{form.controls.electricalHeatInput.errors.min.min}}.</span>
-        </span>
+                {{form.controls.electricalHeatInput.errors.min.min}} MMBtu/hr.</span>
+        </div>
     </div>
     <div class="form-group">
-        <label class="strong">Equivalent Fuel-Fired Heat Input</label>
-        <div *ngIf="fuelFiredHeatInput" class="small text-center">
-            <strong>{{fuelFiredHeatInput | number:'2.2-2'}} MMBtu/hr</strong>
-            <!-- <span *ngIf="settings.unitsOfMeasure == 'Imperial'">
-          <strong> MMBtu/hr</strong>
-        </span>
-        <span *ngIf="settings.unitsOfMeasure == 'Metric'">
-          <strong> GJ/hr</strong>
-        </span> -->
+        <label>Equivalent Fuel-Fired Heat Input</label>
+        <div *ngIf="fuelFiredHeatInput" class="small text-center bold">
+            {{fuelFiredHeatInput | number:'2.2-2'}} MMBtu/hr
         </div>
-        <div *ngIf="!fuelFiredHeatInput" class="small text-center">
-            <strong>&mdash; &mdash;</strong>
+        <div *ngIf="!fuelFiredHeatInput" class="small text-center bold">
+            &mdash; &mdash;
         </div>
     </div>
 </form>

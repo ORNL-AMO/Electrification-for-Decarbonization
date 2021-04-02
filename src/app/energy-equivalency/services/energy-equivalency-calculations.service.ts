@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EnergyEquivalencyElectric, EnergyEquivalencyFuel } from '../models/energyEquivalency';
+import { EnergyEquivalencyElectric, EnergyEquivalencyFuel } from '../../models/energyEquivalency';
 
 @Injectable({
   providedIn: 'root'

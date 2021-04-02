@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EnergyEquivalencyService } from '../energy-equivalency/energy-equivalency.service';
+import { EnergyEquivalencyService } from '../energy-equivalency/services/energy-equivalency.service';
 import { EnergyEquivalencyElectric, EnergyEquivalencyFuel } from '../models/energyEquivalency';
 
 @Component({

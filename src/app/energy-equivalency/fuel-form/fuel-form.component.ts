@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { EnergyEquivalencyFuel } from 'src/app/models/energyEquivalency';
-import { EnergyEquivalencyCalculationsService } from '../../energy-equivalency-calculations.service';
-import { EnergyEquivalencyService } from '../../energy-equivalency.service';
-import { EnergyEquivalencyFormService } from '../energy-equivalency-form.service';
+import { EnergyEquivalencyCalculationsService } from '../services/energy-equivalency-calculations.service';
+import { EnergyEquivalencyFormService } from '../services/energy-equivalency-form.service';
+import { EnergyEquivalencyService } from '../services/energy-equivalency.service';
 
 @Component({
   selector: 'app-fuel-form',
