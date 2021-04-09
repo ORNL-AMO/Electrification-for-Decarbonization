@@ -1,0 +1,101 @@
+<form [formGroup]="form" class="p-3" #formElement>
+    <div class="form-group">
+        <label for="operatingHours">Annual Operating Hours</label>
+        <div class="input-group">
+            <span class="input-group-addon op-hour-addon units">
+                <a class="click-link" (click)="openOperatingHoursModal()"><span class="fa fa-calculator"></span></a>
+            </span>
+            <input name="operatingHours" class="form-control" type="number" step="any" formControlName="operatingHours"
+                id="operatingHours" (input)="save()" onfocus="this.select();" (focus)="changeField('operatingHours')">
+            <span class="input-group-addon units">hrs/yr</span>
+        </div>
+    </div>
+</form>
+
+
+<div class="card" [@modal]="showModal" [ngStyle]="{'width.px': modalWidth}">
+    <div class="card-header header">
+        Operating Hours
+    </div>
+    <div class="card-body tab-content">
+        <form [formGroup]="operatingHoursForm">
+            <div class="form-group">
+                <label for="hoursPerDay">Hours / Day</label>
+                <div class="incrementor form-control input-group">
+                    <button class="btn input-group-btn" (click)="subtractOne(operatingHoursForm.controls.hoursPerDay)"
+                        [disabled]="operatingHoursForm.controls.hoursPerDay.value  == 0">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn input-group-btn" (click)="addOne(operatingHoursForm.controls.hoursPerDay)"
+                        [disabled]="operatingHoursForm.controls.hoursPerDay.value == 24">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <input name="hoursPerDay" type="number" step="1" min="0" max="24" class="form-control"
+                        id="hoursPerDay" (input)="calculatHrsPerYear()" formControlName="hoursPerDay">
+                </div>
+                <div class="alert-danger small"
+                    *ngIf="operatingHoursForm.controls.hoursPerDay.invalid && !operatingHoursForm.controls.hoursPerDay.pristine">
+                    <span *ngIf="operatingHoursForm.controls.hoursPerDay.errors.required">Value required.</span>
+                    <span *ngIf="operatingHoursForm.controls.hoursPerDay.errors.min">Value cannot not be lower than
+                        {{operatingHoursForm.controls.hoursPerDay.errors.min.min}} hours per day.</span>
+                    <span *ngIf="operatingHoursForm.controls.hoursPerDay.errors.max">Value cannot not be greater than
+                        {{operatingHoursForm.controls.hoursPerDay.errors.max.max}} hours per day.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="daysPerWeek">Days / Week</label>
+                <div class="incrementor form-control input-group">
+                    <button class="btn input-group-btn" (click)="subtractOne(operatingHoursForm.controls.daysPerWeek)"
+                        [disabled]="operatingHoursForm.controls.daysPerWeek.value == 0">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn input-group-btn" (click)="addOne(operatingHoursForm.controls.daysPerWeek)"
+                        [disabled]="operatingHoursForm.controls.daysPerWeek.value == 7">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <input name="daysPerWeek" type="number" step="1" min="0" max="7" class="form-control"
+                        id="daysPerWeek" (input)="calculatHrsPerYear()" formControlName="daysPerWeek">
+                </div>
+                <div class="alert-danger small"
+                    *ngIf="operatingHoursForm.controls.daysPerWeek.invalid && !operatingHoursForm.controls.daysPerWeek.pristine">
+                    <span *ngIf="operatingHoursForm.controls.daysPerWeek.errors.required">Value required.</span>
+                    <span *ngIf="operatingHoursForm.controls.daysPerWeek.errors.min">Value cannot not be lower than
+                        {{operatingHoursForm.controls.daysPerWeek.errors.min.min}} days per week.</span>
+                    <span *ngIf="operatingHoursForm.controls.daysPerWeek.errors.max">Value cannot not be greater than
+                        {{operatingHoursForm.controls.daysPerWeek.errors.max.max}} days per week.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="weeksPerYear">Weeks / Year</label>
+                <div class="incrementor form-control input-group">
+                    <button class="btn input-group-btn" (click)="subtractOne(operatingHoursForm.controls.weeksPerYear)"
+                        [disabled]="operatingHoursForm.controls.weeksPerYear.value == 0">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn input-group-btn" (click)="addOne(operatingHoursForm.controls.weeksPerYear)"
+                        [disabled]="operatingHoursForm.controls.weeksPerYear.value > 53">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <input name="weeksPerYear" type="number" step="1" min="0" max="53" class="form-control"
+                        id="weeksPerYear" (input)="calculatHrsPerYear()" formControlName="weeksPerYear">
+                </div>
+                <div class="alert-danger small"
+                    *ngIf="operatingHoursForm.controls.weeksPerYear.invalid && !operatingHoursForm.controls.weeksPerYear.pristine">
+                    <span *ngIf="operatingHoursForm.controls.weeksPerYear.errors.required">Value required.</span>
+                    <span *ngIf="operatingHoursForm.controls.weeksPerYear.errors.min">Value cannot not be lower than
+                        {{operatingHoursForm.controls.weeksPerYear.errors.min.min}} weeks per year.</span>
+                    <span *ngIf="operatingHoursForm.controls.weeksPerYear.errors.max">Value cannot not be greater than
+                        {{operatingHoursForm.controls.weeksPerYear.errors.max.max}} weeks per year.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="hoursPerYear">Hours / Year</label>
+                <div class="small text-center">{{calculatedHoursPerYear | number:'1.0-0'}}</div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <button class="btn btn-danger" (click)="closeOperatingHoursModal()">Cancel</button>
+        <button class="btn btn-success" (click)="submitOperatingHours()">Save</button>
+    </div>
+</div>

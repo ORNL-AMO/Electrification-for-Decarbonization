@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Electrification-For-Decarbonization';
+
+  tabSelect: string = "results";
+
+
+  constructor() {
+
+  }
+
+
+  setTab(str: string) {
+    this.tabSelect = str;
+  }
 }

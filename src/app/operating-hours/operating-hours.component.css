@@ -1,0 +1,51 @@
+.op-hour-addon{
+    border-left: 1px solid #9c9c9c;
+    border-right: none;
+}
+
+
+.card{
+    position: fixed;
+    z-index: 8000;
+    border-style: solid;
+    border-width: 4px;
+    left: 10px;
+    top: -100%;
+  }
+
+  .btn{
+      padding-top: 6px;
+      padding-bottom: 6px;
+      font-size: small;
+  }
+
+.card-body, .card-header, .card-footer{
+      padding: .5rem;
+  }
+
+  .card-header{
+    /* margin: 10px 0 0px 10px; */
+    font-size: 15px;
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 4px;
+  }
+
+  .op-hour-addon:hover{
+      cursor: pointer;
+      text-decoration: underline;
+  }
+
+.incrementor{
+    border: #9c9c9c solid 1px;
+    padding: 0;
+}
+
+
+.incrementor .btn{
+    border-right: #c9c9c9 solid 1px;
+    background: #ffffff;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 );
+    padding: 5px;
+    font-size: 10px;
+}

@@ -6,3 +6,37 @@
 
 
   
+.modification {
+    background: #fff;
+    -webkit-box-shadow: 0px 0px 69px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 69px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 69px -1px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+
+  .scroll-item{
+      max-height: 100% !important;
+      overflow-y: auto;
+  }
+
+  .tabs.primary a {
+    padding: 13px;
+    font-size: 1.25rem;
+    border-left: #c8c8c8 solid 1px;
+    display: block;
+    color: #0F0F0F;
+    background-color: #c8c8c8;
+    text-transform: uppercase;
+
+  }
+
+  .tabs.primary .active a {
+    border: none;
+    border-bottom: #BF3D00 solid 3px;
+    background: white;
+  }
+
+  .tabs.primary a:hover{
+      cursor: pointer;
+      background-color: #fff;
+  }
