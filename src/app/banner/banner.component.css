@@ -9,7 +9,8 @@
 }
 
 .navbar-brand{
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     display: inline-block;
-    letter-spacing: 4px;
+    /* letter-spacing: 4px; */
+    font-size: 1.5rem;
 }

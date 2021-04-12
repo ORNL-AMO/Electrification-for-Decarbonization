@@ -1,4 +1,4 @@
-export interface CurrentEquipment {
+export interface FuelEquipment {
     energySource: number,
     fuelType: number,
     fuelCost: number,
@@ -13,4 +13,19 @@ export interface ElectricalEquipment {
     eGridRegion: number,
     eGridSubregion: number,
     emissionsOutputRate: number
+}
+
+
+export interface ResultsSummary{
+    current: EquipmentSummary,
+    potential: EquipmentSummary,
+    impact: EquipmentSummary,
+}
+
+export interface EquipmentSummary {
+    energyUseMMBtu: number,
+    energyUseKWh: number,
+    energyCost: number,
+    co2Emissions: number,
+    electricalDemandIncrease?: number
 }

@@ -1,1 +1,132 @@
-<p>results works!</p>
+<label class="group-label">Current Results</label>
+<table class="table table-striped table-hover">
+    <tbody *ngIf="summary">
+        <tr>
+            <td>
+                Energy Use
+            </td>
+            <td>
+                {{summary.current.energyUseMMBtu| number:"0.0-0"}} MMBtu/yr
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Energy Use
+            </td>
+            <td>
+                {{summary.current.energyUseKWh| number:"0.0-0"}} kWh/yr
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                Energy Cost
+            </td>
+            <td>
+                {{summary.current.energyCost | currency: 'USD': 'symbol':'0.0-0'}} /yr
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                CO<sub>2</sub> Emissions
+            </td>
+            <td>
+                {{summary.current.co2Emissions| number:"0.0-0"}} tonne CO<sub>2</sub>/yr
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<label class="group-label">Potential Results</label>
+<table class="table table-striped table-hover">
+    <tbody *ngIf="summary">
+        <tr>
+            <td>
+                Energy Use
+            </td>
+            <td>
+                {{summary.potential.energyUseMMBtu| number:"0.0-0"}} MMBtu/yr
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Energy Use
+            </td>
+            <td>
+                {{summary.potential.energyUseKWh| number:"0.0-0"}} kWh/yr
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                Energy Cost
+            </td>
+            <td>
+                {{summary.potential.energyCost | currency: 'USD': 'symbol':'0.0-0'}} /yr
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                CO<sub>2</sub> Emissions
+            </td>
+            <td>
+                {{summary.potential.co2Emissions| number:"0.0-0"}} tonne CO<sub>2</sub>/yr
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<label class="group-label">Impact</label>
+<table class="table table-striped table-hover">
+    <tbody *ngIf="summary">
+        <tr>
+            <td>
+                Energy Use Savings
+            </td>
+            <td>
+                {{summary.impact.energyUseMMBtu| number:"0.0-0"}} MMBtu/yr
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Energy Use Savings
+            </td>
+            <td>
+                {{summary.impact.energyUseKWh| number:"0.0-0"}} kWh/yr
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                Electrical Demand Increase
+            </td>
+            <td>
+                {{summary.impact.electricalDemandIncrease| number:"0.0-0"}} kW
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                Energy Cost
+            </td>
+            <td>
+                {{summary.impact.energyCost | currency: 'USD': 'symbol':'0.0-0'}} /yr
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                CO<sub>2</sub> Emissions
+            </td>
+            <td>
+                {{summary.impact.co2Emissions| number:"0.0-0"}} tonne CO<sub>2</sub>/yr
+            </td>
+        </tr>
+    </tbody>
+</table>

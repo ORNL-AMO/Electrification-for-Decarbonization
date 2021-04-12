@@ -25,7 +25,7 @@ export class OperatingHoursComponent implements OnInit {
   operatingHoursSub: Subscription;
   operatingHoursForm: FormGroup;
   showModal: string = 'hide';
-  calculatedHoursPerYear: number = 8760;
+  calculatedHoursPerYear: number = 1000;
   modalWidth: number;
 
   constructor(private formBuilder: FormBuilder, private dataService: DataService) { }

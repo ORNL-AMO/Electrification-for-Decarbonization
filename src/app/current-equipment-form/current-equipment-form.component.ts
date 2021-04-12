@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { OtherFuel, otherFuels } from '../models/co2FuelSavingsFuels';
 import { DataService } from '../services/data.service';
 
@@ -16,12 +17,25 @@ export class CurrentEquipmentFormComponent implements OnInit {
     outputRate: number
   }>;
   otherFuels: Array<OtherFuel>;
+  currentEmissions: number;
+  currentCost: number;
+  fuelCostAndEmissions: { cost: number, emissions: number };
+  fuelCostAndEmissionsSub: Subscription;
   constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.otherFuels = otherFuels;
     this.fuelOptions = otherFuels[0].fuelTypes;
     this.initForm()
+
+    this.fuelCostAndEmissionsSub = this.dataService.fuelCostAndEmissions.subscribe(val => {
+      this.fuelCostAndEmissions = val;
+    })
+
+  }
+
+  ngOnDestroy() {
+    this.fuelCostAndEmissionsSub.unsubscribe();
   }
 
 
@@ -31,14 +45,15 @@ export class CurrentEquipmentFormComponent implements OnInit {
       "energySource": [this.otherFuels[0].energySource],
       "fuelType": [this.fuelOptions[0].fuelType],
       "fuelCost": [3.99],
-      "equipmentEfficiency": [],
-      "heatInput": [],
-      "emissionsOutputRate": [66.33]
+      "equipmentEfficiency": [60],
+      "heatInput": [10],
+      "emissionsOutputRate": [53.06]
     });
+    this.save();
   }
 
   save() {
-    this.dataService.currentEquipment.next({
+    this.dataService.fuelEquipment.next({
       energySource: this.form.controls.energySource.value,
       fuelType: this.form.controls.fuelType.value,
       fuelCost: this.form.controls.fuelCost.value,
@@ -50,7 +65,7 @@ export class CurrentEquipmentFormComponent implements OnInit {
 
   setFuelOptions() {
     let tmpOtherFuel: OtherFuel = this.otherFuels.find(fuel => { return this.form.controls.energySource.value == fuel.energySource; });
-    if(tmpOtherFuel){
+    if (tmpOtherFuel) {
       this.fuelOptions = tmpOtherFuel.fuelTypes;
       this.form.controls.fuelType.patchValue(this.fuelOptions[0].fuelType);
       this.setFuel();
@@ -59,7 +74,7 @@ export class CurrentEquipmentFormComponent implements OnInit {
 
   setFuel() {
     let tmpFuel: { fuelType: string, outputRate: number } = this.fuelOptions.find(fuelOption => { return this.form.controls.fuelType.value == fuelOption.fuelType; });
-    if(tmpFuel){
+    if (tmpFuel) {
       this.form.controls.emissionsOutputRate.patchValue(tmpFuel.outputRate)
       this.save();
     }

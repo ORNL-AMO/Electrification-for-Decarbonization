@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { eGridRegion, electricityGridRegions } from '../models/electricityGridRegions';
 import { DataService } from '../services/data.service';
 
@@ -11,34 +12,49 @@ import { DataService } from '../services/data.service';
 export class ElectricalEquipmentFormComponent implements OnInit {
 
   form: FormGroup;
-  // fuelOptions: Array<{
-  //   fuelType: string,
-  //   outputRate: number
-  // }>;
-  // otherFuels: Array<OtherFuel>; 
   eGridRegions: Array<eGridRegion>;
   subregions: Array<{
     subregion: string,
     outputRate: number
   }>;
+  equivalenHeatInput: number;
+  potentialEmissions: number;
+  potentialCosts: number;
+  electricalCostAndEmissions: { cost: number, emissions: number };
+  electricalCostAndEmissionsSub: Subscription;
+  electricalHeatInput: number;
+  electricalHeatInputSub: Subscription;
   constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.eGridRegions = electricityGridRegions;
     this.subregions = this.eGridRegions[0].subregions;
     this.initForm();
+
+    this.electricalCostAndEmissionsSub = this.dataService.electricalCostAndEmissions.subscribe(val => {
+      this.electricalCostAndEmissions = val;
+    });
+
+    this.electricalHeatInputSub = this.dataService.electricalHeatInput.subscribe(val => {
+      this.electricalHeatInput = val;
+    })
+  }
+
+  ngOnDestroy() {
+    this.electricalCostAndEmissionsSub.unsubscribe();
+    this.electricalHeatInputSub.unsubscribe();
   }
 
 
   initForm() {
     this.form = this.formBuilder.group({
-      // "energyType": [],
       "electricityCost": [.066],
-      "equipmentEfficiency": [],
+      "equipmentEfficiency": [90],
       "eGridRegion": [this.eGridRegions[0].region],
       "eGridSubregion": [this.subregions[0].subregion],
       "emissionsOutputRate": [this.subregions[0].outputRate]
     });
+    this.save();
   }
 
   save() {

@@ -1,7 +1,7 @@
-<form [formGroup]="form" class="p-3">
-
+<form [formGroup]="form" class="pl-3 pr-3">
+    <label class="group-label">Potential Electrical Equipment</label>
     <div class="form-group">
-        <label for="fuelCost">Fuel Cost</label>
+        <label for="electricityCost">Electricity Cost</label>
         <div class="input-group">
             <input name="electricityCost" type="number" step=".1" class="form-control" id="electricityCost" (input)="save()"
                 formControlName="electricityCost" onfocus="this.select();">
@@ -18,7 +18,14 @@
         </div>
     </div>
 
-    <!--Equivalen Electrical Heat Input-->
+    <div class="d-flex w-100">
+        <label class="w-50">
+            Equivalent Electrical Heat Input
+        </label>
+        <label class="w-50 text-center">
+            {{electricalHeatInput | number:"0.0-2"}} kW
+        </label>
+    </div>
 
     <div class="form-group">
         <label for="eGridRegion">eGrid Region</label>
@@ -48,3 +55,20 @@
         </div>
     </div>
 </form>
+
+<div class="d-flex w-100 pl-3 pr-3">
+    <label class="w-50">
+        Potential CO<sub>2</sub> Emissions
+    </label>
+    <label class="w-50 text-center">
+        {{electricalCostAndEmissions.emissions | number:"0.0-2"}} tonne CO<sub>2</sub>/yr
+    </label>
+</div>
+<div class="d-flex w-100 pl-3 pr-3">
+    <label class="w-50">
+        Potential Electricity Costs
+    </label>
+    <label class="w-50 text-center">
+        {{electricalCostAndEmissions.cost | currency: 'USD': 'symbol':'0.0-0'}} /yr
+    </label>
+</div>

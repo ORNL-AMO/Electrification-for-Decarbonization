@@ -20,13 +20,15 @@
   }
 
   .tabs.primary a {
-    padding: 13px;
+    padding-left: 13px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     font-size: 1.25rem;
     border-left: #c8c8c8 solid 1px;
     display: block;
     color: #0F0F0F;
     background-color: #c8c8c8;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 
   }
 
