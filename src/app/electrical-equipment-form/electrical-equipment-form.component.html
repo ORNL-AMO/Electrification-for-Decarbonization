@@ -3,8 +3,9 @@
     <div class="form-group">
         <label for="electricityCost">Electricity Cost</label>
         <div class="input-group">
-            <input name="electricityCost" type="number" step=".1" class="form-control" id="electricityCost" (input)="save()"
-                formControlName="electricityCost" onfocus="this.select();">
+            <input name="electricityCost" type="number" step=".1" class="form-control" id="electricityCost"
+                (input)="save()" formControlName="electricityCost" onfocus="this.select();"
+                (focus)="focusField('electricityCost')">
             <span class="input-group-addon units small">$/KWh</span>
         </div>
     </div>
@@ -12,8 +13,9 @@
     <div class="form-group">
         <label for="electricalEquipmentEfficiency">Electrically Heated Equipment Efficiency</label>
         <div class="input-group">
-            <input name="equipmentEfficiency" type="number" step=".1" class="form-control" id="electricalEquipmentEfficiency"
-                (input)="save()" formControlName="equipmentEfficiency" onfocus="this.select();">
+            <input name="equipmentEfficiency" type="number" step=".1" class="form-control"
+                id="electricalEquipmentEfficiency" (input)="save()" formControlName="equipmentEfficiency"
+                onfocus="this.select();" (focus)="focusField('electricalEquipmentEfficiency')">
             <span class="input-group-addon units small">%</span>
         </div>
     </div>
@@ -31,7 +33,7 @@
         <label for="eGridRegion">eGrid Region</label>
         <div class="input-group">
             <select name="eGridRegion" class="form-control" id="eGridRegion" formControlName="eGridRegion"
-                (change)="setRegion()">
+                (change)="setRegion()" (focus)="focusField('eGridRegion')">
                 <option *ngFor="let option of eGridRegions" [ngValue]="option.region">{{option.region}}</option>
             </select>
         </div>
@@ -40,7 +42,8 @@
     <div class="form-group">
         <label for="eGridSubregion">eGrid Subregion</label>
         <div class="input-group">
-            <select name="eGridSubregion" class="form-control" id="fuelType" formControlName="eGridSubregion" (change)="setSubRegion()">
+            <select name="eGridSubregion" class="form-control" id="fuelType" formControlName="eGridSubregion"
+                (change)="setSubRegion()" (focus)="focusField('eGridSubregion')">
                 <option *ngFor="let option of subregions" [ngValue]="option.subregion">{{option.subregion}}</option>
             </select>
         </div>
@@ -50,7 +53,8 @@
         <label for="emissionsOutputRate">Total Emission Output Rate</label>
         <div class="input-group">
             <input name="emissionsOutputRate" type="number" step="1" class="form-control" id="emissionsOutputRate"
-                (input)="save()" formControlName="emissionsOutputRate" onfocus="this.select();">
+                (input)="save()" formControlName="emissionsOutputRate" onfocus="this.select();"
+                (focus)="focusField('emissionsOutputRate')">
             <span class="input-group-addon units small">kg CO<sub>2</sub>/MMBtu </span>
         </div>
     </div>

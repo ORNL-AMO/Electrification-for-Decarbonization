@@ -94,4 +94,8 @@ export class ElectricalEquipmentFormComponent implements OnInit {
       this.save()
     }
   }
+
+  focusField(str: string){
+    this.dataService.currentField.next(str);
+  }
 }

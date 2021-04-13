@@ -86,4 +86,8 @@ export class OperatingHoursComponent implements OnInit {
     this.save();
     this.closeOperatingHoursModal();
   }
+
+  focusField(str: string){
+    this.dataService.currentField.next(str);
+  }
 }

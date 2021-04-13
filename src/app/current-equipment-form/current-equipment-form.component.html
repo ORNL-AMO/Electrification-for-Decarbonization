@@ -17,7 +17,7 @@
         <label for="energySource">Energy Source</label>
         <div class="input-group">
             <select name="energySource" class="form-control" id="energySource" formControlName="energySource"
-                (change)="setFuelOptions()">
+                (change)="setFuelOptions()" (focus)="focusField('energySource')">
                 <option *ngFor="let option of otherFuels" [ngValue]="option.energySource">{{option.energySource}}
                 </option>
             </select>
@@ -27,7 +27,8 @@
     <div class="form-group" *ngIf="fuelOptions.length > 1">
         <label for="fuelType">Fuel Type</label>
         <div class="input-group">
-            <select name="fuelType" class="form-control" id="fuelType" formControlName="fuelType" (change)="setFuel()">
+            <select name="fuelType" class="form-control" id="fuelType" formControlName="fuelType" (change)="setFuel()"
+                (focus)="focusField('fuelType')">
                 <option *ngFor="let option of fuelOptions" [ngValue]="option.fuelType">{{option.fuelType}}</option>
             </select>
         </div>
@@ -37,7 +38,7 @@
         <label for="fuelCost">Fuel Cost</label>
         <div class="input-group">
             <input name="fuelCost" type="number" step=".1" class="form-control" id="fuelCost" (input)="save()"
-                formControlName="fuelCost" onfocus="this.select();">
+                formControlName="fuelCost" onfocus="this.select();" (focus)="focusField('fuelCost')">
             <span class="input-group-addon units small">$/MMBtu</span>
         </div>
     </div>
@@ -45,7 +46,8 @@
         <label for="equipmentEfficiency">Fuel-Fire Equipment Efficiency</label>
         <div class="input-group">
             <input name="equipmentEfficiency" type="number" step=".1" class="form-control" id="equipmentEfficiency"
-                (input)="save()" formControlName="equipmentEfficiency" onfocus="this.select();">
+                (input)="save()" formControlName="equipmentEfficiency" onfocus="this.select();"
+                (focus)="focusField('equipmentEfficiency')">
             <span class="input-group-addon units small">%</span>
         </div>
     </div>
@@ -53,7 +55,7 @@
         <label for="heatInput">Heat Input for Fuel-Fire Equipment</label>
         <div class="input-group">
             <input name="heatInput" type="number" step=".1" class="form-control" id="heatInput" (input)="save()"
-                formControlName="heatInput" onfocus="this.select();">
+                formControlName="heatInput" onfocus="this.select();" (focus)="focusField('energySource')">
             <span class="input-group-addon units small">MMBtu/hr</span>
         </div>
     </div>
@@ -61,7 +63,8 @@
         <label for="emissionsOutputRate">Total Emission Output Rate</label>
         <div class="input-group">
             <input name="emissionsOutputRate" type="number" step=".1" class="form-control" id="emissionsOutputRate"
-                (input)="save()" formControlName="emissionsOutputRate" onfocus="this.select();">
+                (input)="save()" formControlName="emissionsOutputRate" onfocus="this.select();"
+                (focus)="focusField('emissionsOutputRate')">
             <span class="input-group-addon units small">kg CO<sub>2</sub>/MMBtu</span>
         </div>
     </div>

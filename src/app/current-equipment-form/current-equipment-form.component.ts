@@ -94,4 +94,8 @@ export class CurrentEquipmentFormComponent implements OnInit {
     }
   }
 
+
+  focusField(str: string){
+    this.dataService.currentField.next(str);
+  }
 }

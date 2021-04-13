@@ -14,7 +14,7 @@ export class DataService {
   fuelCostAndEmissions: BehaviorSubject<{ cost: number, emissions: number }>;
   electricalCostAndEmissions: BehaviorSubject<{ cost: number, emissions: number }>;
   summary: BehaviorSubject<ResultsSummary>;
-
+  currentField: BehaviorSubject<string>;
 
   constructor() {
     this.operatingHours = new BehaviorSubject<number>(1000);
@@ -37,6 +37,7 @@ export class DataService {
     this.fuelCostAndEmissions = new BehaviorSubject<{ cost: number, emissions: number }>({ cost: 0, emissions: 0 });
     this.electricalCostAndEmissions = new BehaviorSubject<{ cost: number, emissions: number }>({ cost: 0, emissions: 0 });
     this.summary = new BehaviorSubject<ResultsSummary>(undefined);
+    this.currentField = new BehaviorSubject<string>('default');
   }
 
   setExampleData(){
