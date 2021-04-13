@@ -1,3 +1,19 @@
+<div class="row no-gutters justify-content-center" *ngIf="summary">
+    <div class="col-md-6 col-sm-12 col-lg-4 p-2">
+        <app-gauge [percentValue]="summary.percentEnergyReduction" [title]="'Energy Reduction'"></app-gauge>
+        <!-- <label>Energy Reduction</label> -->
+    </div>
+    <div class="col-md-6 col-sm-12 col-lg-4 p-2">
+        <app-gauge [percentValue]="summary.percentCostReduction" [title]="'Cost Reduction'"></app-gauge>
+        <!-- <label>Cost Reduction</label> -->
+    </div>
+    <div class="col-md-6 col-sm-12 col-lg-4 p-2">
+        <app-gauge [percentValue]="summary.percentCO2Reduction" [title]="'CO2 Reduction'"></app-gauge>
+        <!-- <label>CO<sub>2</sub> Reduction</label> -->
+    </div>
+</div>
+
+
 <label class="group-label">Current Results</label>
 <table class="table table-striped table-hover">
     <tbody *ngIf="summary">

@@ -40,7 +40,7 @@ export class DataService {
     this.currentField = new BehaviorSubject<string>('default');
   }
 
-  setExampleData(){
+  setExampleData() {
     this.operatingHours.next(1000);
     this.fuelEquipment.next({
       energySource: 'Natural Gas',
@@ -60,7 +60,7 @@ export class DataService {
   }
 
 
-  setDefaultData(){
+  setDefaultData() {
     this.operatingHours.next(8760);
     this.fuelEquipment.next({
       energySource: undefined,
@@ -78,9 +78,6 @@ export class DataService {
       emissionsOutputRate: undefined
     });
   }
-
-
-
 
   calculateResults() {
     let electricalEquipment: ElectricalEquipment = this.electricalEquipment.getValue();
@@ -141,7 +138,10 @@ export class DataService {
     this.summary.next({
       current: currentResults,
       potential: potentialResults,
-      impact: impact
+      impact: impact,
+      percentCO2Reduction: this.getPercentSavings(currentResults.co2Emissions, potentialResults.co2Emissions),
+      percentCostReduction: this.getPercentSavings(currentResults.energyCost, potentialResults.energyCost),
+      percentEnergyReduction: this.getPercentSavings(currentResults.energyUseMMBtu, potentialResults.energyUseMMBtu)
     });
   }
 
@@ -174,6 +174,10 @@ export class DataService {
       co2Emissions: electricalCostAndEmissions.emissions
     }
 
+  }
+
+  getPercentSavings(existing: number, potential: number): number {
+    return ((existing - potential) / existing) * 100
   }
 
 }

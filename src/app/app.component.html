@@ -15,7 +15,7 @@
         </div>
         <app-electrical-equipment-form></app-electrical-equipment-form>
       </div>
-      <div class="col-6">
+      <div class="col-6 max-height">
         <div class="d-flex flex-column">
           <div class="d-flex flex-wrap tabs primary mr-2 ml-2 sticky-top">
             <div class="w-50 panel-tab-item" [ngClass]="{'active': tabSelect == 'results'}" (click)="setTab('results')">
@@ -25,7 +25,7 @@
               <a>Help</a>
             </div>
           </div>
-          <div class="mr-2 ml-2 p-2">
+          <div class="mr-2 ml-2 p-2 scroll-item">
             <app-results *ngIf="tabSelect == 'results'"></app-results>
             <app-help *ngIf="tabSelect == 'help'"></app-help>
           </div>

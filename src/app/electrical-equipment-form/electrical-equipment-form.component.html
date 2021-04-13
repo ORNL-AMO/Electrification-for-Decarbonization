@@ -3,7 +3,7 @@
     <div class="form-group">
         <label for="electricityCost">Electricity Cost</label>
         <div class="input-group">
-            <input name="electricityCost" type="number" step=".1" class="form-control" id="electricityCost"
+            <input name="electricityCost" type="number" step=".001" class="form-control" id="electricityCost"
                 (input)="save()" formControlName="electricityCost" onfocus="this.select();"
                 (focus)="focusField('electricityCost')">
             <span class="input-group-addon units small">$/KWh</span>
@@ -13,7 +13,7 @@
     <div class="form-group">
         <label for="electricalEquipmentEfficiency">Electrically Heated Equipment Efficiency</label>
         <div class="input-group">
-            <input name="equipmentEfficiency" type="number" step=".1" class="form-control"
+            <input name="equipmentEfficiency" type="number" step=".25" class="form-control"
                 id="electricalEquipmentEfficiency" (input)="save()" formControlName="equipmentEfficiency"
                 onfocus="this.select();" (focus)="focusField('electricalEquipmentEfficiency')">
             <span class="input-group-addon units small">%</span>

@@ -10,6 +10,10 @@ import { ElectricalEquipmentFormComponent } from './electrical-equipment-form/el
 import { ResultsComponent } from './results/results.component';
 import { HelpComponent } from './help/help.component';
 import { OperatingHoursComponent } from './operating-hours/operating-hours.component';
+import { PlotlyViaWindowModule } from 'angular-plotly.js';
+
+import { GaugeComponent } from './results/gauge/gauge.component';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +23,14 @@ import { OperatingHoursComponent } from './operating-hours/operating-hours.compo
     ElectricalEquipmentFormComponent,
     ResultsComponent,
     HelpComponent,
-    OperatingHoursComponent
+    OperatingHoursComponent,
+    GaugeComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PlotlyViaWindowModule
   ],
   providers: [],
   bootstrap: [AppComponent]

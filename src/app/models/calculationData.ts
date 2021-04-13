@@ -20,6 +20,9 @@ export interface ResultsSummary{
     current: EquipmentSummary,
     potential: EquipmentSummary,
     impact: EquipmentSummary,
+    percentCostReduction: number,
+    percentCO2Reduction: number,
+    percentEnergyReduction: number
 }
 
 export interface EquipmentSummary {

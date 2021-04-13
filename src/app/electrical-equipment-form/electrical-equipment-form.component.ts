@@ -84,6 +84,7 @@ export class ElectricalEquipmentFormComponent implements OnInit {
     let tmpRegion: eGridRegion = this.eGridRegions.find((val) => { return this.form.controls.eGridRegion.value == val.region; });
     if (tmpRegion) {
       this.subregions = tmpRegion.subregions;
+      this.form.controls.eGridSubregion.patchValue(this.subregions[0].subregion);
       this.setSubRegion();
     }
   }
