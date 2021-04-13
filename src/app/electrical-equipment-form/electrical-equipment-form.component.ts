@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { ElectricalEquipment } from '../models/calculationData';
 import { eGridRegion, electricityGridRegions } from '../models/electricityGridRegions';
 import { DataService } from '../services/data.service';
 
@@ -12,11 +13,11 @@ import { DataService } from '../services/data.service';
 export class ElectricalEquipmentFormComponent implements OnInit {
 
   form: FormGroup;
-  eGridRegions: Array<eGridRegion>;
+  eGridRegions: Array<eGridRegion> = [];
   subregions: Array<{
     subregion: string,
     outputRate: number
-  }>;
+  }> = [];
   equivalenHeatInput: number;
   potentialEmissions: number;
   potentialCosts: number;
@@ -24,12 +25,23 @@ export class ElectricalEquipmentFormComponent implements OnInit {
   electricalCostAndEmissionsSub: Subscription;
   electricalHeatInput: number;
   electricalHeatInputSub: Subscription;
+  electricalEquipmentSub: Subscription;
+  isFormChangeUpdate: boolean = false;
   constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.eGridRegions = electricityGridRegions;
-    this.subregions = this.eGridRegions[0].subregions;
-    this.initForm();
+    this.electricalEquipmentSub = this.dataService.electricalEquipment.subscribe(val => {
+      if (this.isFormChangeUpdate == false) {
+        this.form = this.getFormFromObj(val);
+        let tmpRegion: eGridRegion = this.eGridRegions.find((val) => { return this.form.controls.eGridRegion.value == val.region; });
+        if (tmpRegion) {
+          this.subregions = tmpRegion.subregions;
+        }
+      } else {
+        this.isFormChangeUpdate = false;
+      }
+    })
 
     this.electricalCostAndEmissionsSub = this.dataService.electricalCostAndEmissions.subscribe(val => {
       this.electricalCostAndEmissions = val;
@@ -43,21 +55,22 @@ export class ElectricalEquipmentFormComponent implements OnInit {
   ngOnDestroy() {
     this.electricalCostAndEmissionsSub.unsubscribe();
     this.electricalHeatInputSub.unsubscribe();
+    this.electricalEquipmentSub.unsubscribe();
   }
 
 
-  initForm() {
-    this.form = this.formBuilder.group({
-      "electricityCost": [.066],
-      "equipmentEfficiency": [90],
-      "eGridRegion": [this.eGridRegions[0].region],
-      "eGridSubregion": [this.subregions[0].subregion],
-      "emissionsOutputRate": [this.subregions[0].outputRate]
+  getFormFromObj(obj: ElectricalEquipment): FormGroup {
+    return this.formBuilder.group({
+      "electricityCost": [obj.electricityCost],
+      "equipmentEfficiency": [obj.equipmentEfficiency, [Validators.min(0), Validators.max(100)]],
+      "eGridRegion": [obj.eGridRegion],
+      "eGridSubregion": [obj.eGridSubregion],
+      "emissionsOutputRate": [obj.emissionsOutputRate]
     });
-    this.save();
   }
 
   save() {
+    this.isFormChangeUpdate = true;
     this.dataService.electricalEquipment.next({
       electricityCost: this.form.controls.electricityCost.value,
       equipmentEfficiency: this.form.controls.equipmentEfficiency.value,

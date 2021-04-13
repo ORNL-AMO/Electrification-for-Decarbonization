@@ -18,13 +18,68 @@ export class DataService {
 
   constructor() {
     this.operatingHours = new BehaviorSubject<number>(1000);
-    this.fuelEquipment = new BehaviorSubject<FuelEquipment>(undefined);
-    this.electricalEquipment = new BehaviorSubject<ElectricalEquipment>(undefined);
+    this.fuelEquipment = new BehaviorSubject<FuelEquipment>({
+      energySource: undefined,
+      fuelType: undefined,
+      fuelCost: undefined,
+      equipmentEfficiency: undefined,
+      heatInput: undefined,
+      emissionsOutputRate: undefined
+    });
+    this.electricalEquipment = new BehaviorSubject<ElectricalEquipment>({
+      electricityCost: undefined,
+      equipmentEfficiency: undefined,
+      eGridRegion: undefined,
+      eGridSubregion: undefined,
+      emissionsOutputRate: undefined
+    });
     this.electricalHeatInput = new BehaviorSubject<number>(0);
     this.fuelCostAndEmissions = new BehaviorSubject<{ cost: number, emissions: number }>({ cost: 0, emissions: 0 });
     this.electricalCostAndEmissions = new BehaviorSubject<{ cost: number, emissions: number }>({ cost: 0, emissions: 0 });
     this.summary = new BehaviorSubject<ResultsSummary>(undefined);
   }
+
+  setExampleData(){
+    this.operatingHours.next(1000);
+    this.fuelEquipment.next({
+      energySource: 'Natural Gas',
+      fuelType: 'Natural Gas',
+      fuelCost: 8,
+      equipmentEfficiency: 60,
+      heatInput: 10,
+      emissionsOutputRate: 53.06
+    });
+    this.electricalEquipment.next({
+      electricityCost: .066,
+      equipmentEfficiency: 90,
+      eGridRegion: 'WECC',
+      eGridSubregion: 'CAMX: WECC California',
+      emissionsOutputRate: 258.7692465
+    });
+  }
+
+
+  setDefaultData(){
+    this.operatingHours.next(8760);
+    this.fuelEquipment.next({
+      energySource: undefined,
+      fuelType: undefined,
+      fuelCost: undefined,
+      equipmentEfficiency: undefined,
+      heatInput: undefined,
+      emissionsOutputRate: undefined
+    });
+    this.electricalEquipment.next({
+      electricityCost: undefined,
+      equipmentEfficiency: undefined,
+      eGridRegion: undefined,
+      eGridSubregion: undefined,
+      emissionsOutputRate: undefined
+    });
+  }
+
+
+
 
   calculateResults() {
     let electricalEquipment: ElectricalEquipment = this.electricalEquipment.getValue();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { FuelEquipment } from '../models/calculationData';
 import { OtherFuel, otherFuels } from '../models/co2FuelSavingsFuels';
 import { DataService } from '../services/data.service';
 
@@ -15,18 +16,30 @@ export class CurrentEquipmentFormComponent implements OnInit {
   fuelOptions: Array<{
     fuelType: string,
     outputRate: number
-  }>;
-  otherFuels: Array<OtherFuel>;
+  }> = [];
+  otherFuels: Array<OtherFuel> = [];
   currentEmissions: number;
   currentCost: number;
   fuelCostAndEmissions: { cost: number, emissions: number };
   fuelCostAndEmissionsSub: Subscription;
+
+  fuelEquipmentSub: Subscription;
+  isFormChangeUpdate: boolean = false;
   constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.otherFuels = otherFuels;
-    this.fuelOptions = otherFuels[0].fuelTypes;
-    this.initForm()
+    this.fuelEquipmentSub = this.dataService.fuelEquipment.subscribe(val => {
+      if (this.isFormChangeUpdate == false) {
+        this.form = this.getFormFromObj(val);
+        let tmpOtherFuel: OtherFuel = this.otherFuels.find(fuel => { return this.form.controls.energySource.value == fuel.energySource; });
+        if (tmpOtherFuel) {
+          this.fuelOptions = tmpOtherFuel.fuelTypes;
+        }
+      } else {
+        this.isFormChangeUpdate = false;
+      }
+    });
 
     this.fuelCostAndEmissionsSub = this.dataService.fuelCostAndEmissions.subscribe(val => {
       this.fuelCostAndEmissions = val;
@@ -36,23 +49,24 @@ export class CurrentEquipmentFormComponent implements OnInit {
 
   ngOnDestroy() {
     this.fuelCostAndEmissionsSub.unsubscribe();
+    this.fuelEquipmentSub.unsubscribe();
   }
 
 
-  initForm() {
-    this.form = this.formBuilder.group({
+  getFormFromObj(obj: FuelEquipment): FormGroup {
+    return this.formBuilder.group({
       // "energyType": [],
-      "energySource": [this.otherFuels[0].energySource],
-      "fuelType": [this.fuelOptions[0].fuelType],
-      "fuelCost": [3.99],
-      "equipmentEfficiency": [60],
-      "heatInput": [10],
-      "emissionsOutputRate": [53.06]
+      "energySource": [obj.energySource],
+      "fuelType": [obj.fuelType],
+      "fuelCost": [obj.fuelCost],
+      "equipmentEfficiency": [obj.equipmentEfficiency, [Validators.min(0), Validators.max(100)]],
+      "heatInput": [obj.heatInput],
+      "emissionsOutputRate": [obj.emissionsOutputRate]
     });
-    this.save();
   }
 
   save() {
+    this.isFormChangeUpdate = true;
     this.dataService.fuelEquipment.next({
       energySource: this.form.controls.energySource.value,
       fuelType: this.form.controls.fuelType.value,

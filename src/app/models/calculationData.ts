@@ -1,6 +1,6 @@
 export interface FuelEquipment {
-    energySource: number,
-    fuelType: number,
+    energySource: string,
+    fuelType: string,
     fuelCost: number,
     equipmentEfficiency: number,
     heatInput: number,
@@ -10,8 +10,8 @@ export interface FuelEquipment {
 export interface ElectricalEquipment {
     electricityCost: number,
     equipmentEfficiency: number,
-    eGridRegion: number,
-    eGridSubregion: number,
+    eGridRegion: string,
+    eGridSubregion: string,
     emissionsOutputRate: number
 }
 

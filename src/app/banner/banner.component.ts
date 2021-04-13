@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EnergyEquivalencyService } from '../energy-equivalency/services/energy-equivalency.service';
-import { EnergyEquivalencyElectric, EnergyEquivalencyFuel } from '../models/energyEquivalency';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-banner',
@@ -9,24 +8,18 @@ import { EnergyEquivalencyElectric, EnergyEquivalencyFuel } from '../models/ener
 })
 export class BannerComponent implements OnInit {
 
-  constructor(private energyEquivalencyService: EnergyEquivalencyService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
 
   resetData() {
-    let electricData: EnergyEquivalencyElectric = this.energyEquivalencyService.getDefaultElectricData();
-    this.energyEquivalencyService.electricData.next(electricData);
-    let fuelData: EnergyEquivalencyFuel = this.energyEquivalencyService.getDefaultFuelData();
-    this.energyEquivalencyService.fuelData.next(fuelData);
+    this.dataService.setDefaultData();
   }
 
   generateExample() {
-    let electricData: EnergyEquivalencyElectric = this.energyEquivalencyService.getExampleElectricData();
-    this.energyEquivalencyService.electricData.next(electricData);
-    let fuelData: EnergyEquivalencyFuel = this.energyEquivalencyService.getExampleFuelData();
-    this.energyEquivalencyService.fuelData.next(fuelData);
+    this.dataService.setExampleData();
   }
 
 
