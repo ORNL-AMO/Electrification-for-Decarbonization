@@ -47,7 +47,7 @@
         <div class="input-group">
             <input name="equipmentEfficiency" type="number" step=".1" class="form-control" id="equipmentEfficiency"
                 (input)="save()" formControlName="equipmentEfficiency" onfocus="this.select();"
-                (focus)="focusField('equipmentEfficiency')">
+                (focus)="focusField('equipmentEfficiencyFuel')">
             <span class="input-group-addon units small">%</span>
         </div>
     </div>
@@ -55,7 +55,7 @@
         <label for="heatInput">Heat Input for Fuel-Fire Equipment</label>
         <div class="input-group">
             <input name="heatInput" type="number" step=".1" class="form-control" id="heatInput" (input)="save()"
-                formControlName="heatInput" onfocus="this.select();" (focus)="focusField('energySource')">
+                formControlName="heatInput" onfocus="this.select();" (focus)="focusField('heatInput')">
             <span class="input-group-addon units small">MMBtu/hr</span>
         </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="input-group">
             <input name="emissionsOutputRate" type="number" step=".1" class="form-control" id="emissionsOutputRate"
                 (input)="save()" formControlName="emissionsOutputRate" onfocus="this.select();"
-                (focus)="focusField('emissionsOutputRate')">
+                (focus)="focusField('emissionsOutputRateFuel')">
             <span class="input-group-addon units small">kg CO<sub>2</sub>/MMBtu</span>
         </div>
     </div>

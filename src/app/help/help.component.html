@@ -1,131 +1,212 @@
 <div class="p-4 pt-2 d-flex flex-column help-info">
-    <h5>
-      Energy Equivalency Help
+  <h5>
+    Electrification for Decarbonization Help
+    <br>
+    <small class="text-muted">Use this calcualtor to estimate potential cost and CO<sub>2</sub> emissions savings
+      resulting from
+      changing from fuel based equipment to electrical equipment.
       <br>
-      <small class="text-muted">Provides calculations for converting values of energy input requirements when the heat source is changed from fuel-firing
-        (MMBtu/hr or GJ/hr) to electricity (kW), or vice versa.
-  
+      Enter the facility’s region for electricity or the fuel type and the electricity use
+      or fuel energy. The emission output rate can be edited, but will return to the default value when the
+      electricity/fuel options are changed.
+      <br>
+      Emission Output Rates were obtained from the EPA and the Electronic Code of Federal Regulations.
+    </small>
+    <hr>
+  </h5>
+  <h6>
+    <small class="text-muted">
+      <a href="https://www.epa.gov/energy/emissions-generation-resource-integrated-database-egrid" target="_blank">
+        US EPA Emissions & Generation Resource Integrate Database (eGRID)</a>
+      <br>
+      <hr>
+      <a href="https://www.epa.gov/sites/production/files/2015-07/documents/emission-factors_2014.pdf" target="_blank">
+        US EPA Emissions Factors for Greenhouse Gas Inventories (PDF)</a>
+      <br>
+      <hr>
+      <a href="https://www.ecfr.gov/cgi-bin/text-idx?SID=5918762f070a5581dfde66942e2e91e6&mc=true&node=ap40.23.98_138.1&rgn=div9"
+        target="_blank">
+        e-CFR Default CO<sub>2</sub> Emission Factors for Various Types of Fuel</a>
+    </small>
+  </h6>
+  <hr class="my-1 hr-spacer">
+
+  <div class="my-2" *ngIf="currentField == 'operatingHours'">
+    <h6>
+      Operating Hours
+      <br>
+      <small class="text-muted">
+        Hours per year that the equipment is in use. The calculator can be used to help calculate the hours by days,
+        weeks and months.
+        <hr>
       </small>
-    </h5>
-    <hr class="my-1 hr-spacer">
-  
-    <div class="my-2" *ngIf="currentField == 'fuelFiredEfficiency'">
-      <h6>
-        Fuel Fired Efficiency (Electrical)
-        <br>
-        <small class="text-muted">
-          Furnace efficiency of the baseline (fuel-fired furnace).
-          <hr>
-        </small>
-      </h6>
-      <div class="w-100 d-flex justify-content-center">
-        <table class="table table-hover table-striped">
-          <tbody>
-            <tr>
-              <th class="w-50 text-center">Minimum</th>
-              <th class="w-50 text-center">Maximum</th>
-            </tr>
-            <tr>
-              <td class="w-50 text-center">0 %</td>
-              <td class="w-50 text-center">100 %</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="my-2" *ngIf="currentField == 'electricallyHeatedEfficiency'">
-      <h6>
-        Electrical Heated Efficiency (Electrical)
-        <br>
-        <small class="text-muted">
-          Furnace efficiency of the alternate (electric furnace).
-          <hr>
-        </small>
-      </h6>
-      <div class="w-100 d-flex justify-content-center">
-        <table class="table table-hover table-striped">
-          <tbody>
-            <tr>
-              <th class="w-50 text-center">Minimum</th>
-              <th class="w-50 text-center">Maximum</th>
-            </tr>
-            <tr>
-              <td class="w-50 text-center">0 %</td>
-              <td class="w-50 text-center">100 %</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  
-    <div class="my-2" *ngIf="currentField == 'fuelFiredHeatInput'">
-      <h6>
-        Fuel Fired Heat Input (Electrical)
-        <br>
-        <small class="text-muted">
-          Required heat input of fuel-fired equipment.
-          <hr>
-        </small>
-      </h6>
-    </div>
-    <div class="my-2" *ngIf="currentField == 'electricallyHeatedEfficiencyFuel'">
-      <h6>
-        Electrically Heated Efficiency (Fuel)
-        <br>
-        <small class="text-muted">
-          Furnace efficiency of the baseline (electric furnace).
-          <hr>
-        </small>
-      </h6>
-      <div class="w-100 d-flex justify-content-center">
-        <table class="table table-hover table-striped">
-          <tbody>
-            <tr>
-              <th class="w-50 text-center">Minimum</th>
-              <th class="w-50 text-center">Maximum</th>
-            </tr>
-            <tr>
-              <td class="w-50 text-center">0 %</td>
-              <td class="w-50 text-center">100 %</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  
-    <div class="my-2" *ngIf="currentField == 'fuelFiredEfficiencyFuel'">
-      <h6> Fuel-Fired Efficiency (Fuel)
-        <br>
-        <small class="text-muted">
-          Furnace efficiency of the alternate (fuel-fired furnace).
-          <hr>
-        </small>
-      </h6>
-      <div class="w-100 d-flex justify-content-center">
-        <table class="table table-hover table-striped">
-          <tbody>
-            <tr>
-              <th class="w-50 text-center">Minimum</th>
-              <th class="w-50 text-center">Maximum</th>
-            </tr>
-            <tr>
-              <td class="w-50 text-center">0 %</td>
-              <td class="w-50 text-center">100 %</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  
-  
-    <div class="my-2" *ngIf="currentField == 'electricalHeatInput'">
-      <h6>
-        Electrical Heat Input (Fuel)
-        <br>
-        <small class="text-muted">
-          Required heat input for electrically heated equipment.
-          <hr>
-        </small>
-      </h6>
+    </h6>
+    <div class="w-100 d-flex justify-content-center">
+      <table class="table table-hover table-striped">
+        <tbody>
+          <tr>
+            <th class="w-50 text-center">Minimum</th>
+            <th class="w-50 text-center">Maximum</th>
+          </tr>
+          <tr>
+            <td class="w-50 text-center">0 hrs/yr</td>
+            <td class="w-50 text-center">8760 hrs/yr</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+  <!--TODO: FUEL-->
+  <div class="my-2" *ngIf="currentField == 'energySource'">
+    <h6>
+      Energy Source
+      <br>
+      <small class="text-muted">
+        <!--NEEDED-->
+        <hr>
+      </small>
+    </h6>
+  </div>
+  <div class="my-2" *ngIf="currentField == 'fuelType'">
+    <h6>
+      Fuel Type
+      <br>
+      <small class="text-muted">
+        <!--NEEDED-->
+        <hr>
+      </small>
+    </h6>
+  </div>
+
+  <div class="my-2" *ngIf="currentField == 'fuelCost'">
+    <h6>
+      Fuel Cost
+      <br>
+      <small class="text-muted">
+        <!--NEEDED-->
+        Cost of fuel to power equipment.
+        <hr>
+      </small>
+    </h6>
+  </div>
+
+  <div class="my-2" *ngIf="currentField == 'equipmentEfficiencyFuel'">
+    <h6>
+      Fuel Equipment Efficiency
+      <br>
+      <small class="text-muted">
+        Efficiency of the fuel equipment you are considering replacing.
+        <hr>
+      </small>
+    </h6>
+    <div class="w-100 d-flex justify-content-center">
+      <table class="table table-hover table-striped">
+        <tbody>
+          <tr>
+            <th class="w-50 text-center">Minimum</th>
+            <th class="w-50 text-center">Maximum</th>
+          </tr>
+          <tr>
+            <td class="w-50 text-center">0 %</td>
+            <td class="w-50 text-center">100 %</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="my-2" *ngIf="currentField == 'heatInput'">
+    <h6> Heat Input
+      <br>
+      <small class="text-muted">
+        Required heat input of fuel-fired equipment.
+        <hr>
+      </small>
+    </h6>
+  </div>
+
+
+  <div class="my-2" *ngIf="currentField == 'emissionsOutputRateFuel'">
+    <h6>
+      Fuel Equipment Emissions Output Rate
+      <br>
+      <small class="text-muted">
+        <!--needed-->
+        <hr>
+      </small>
+    </h6>
+  </div>
+
+
+
+  <!--TODO: Electric-->
+  <div class="my-2" *ngIf="currentField == 'electricityCost'">
+    <h6>
+      Electricity Cost
+      <br>
+      <small class="text-muted">
+        Cost of electricity from utility.
+        <hr>
+      </small>
+    </h6>
+  </div>
+
+  <div class="my-2" *ngIf="currentField == 'electricalEquipmentEfficiency'">
+    <h6>
+      Electrical Equipment Efficiency
+      <br>
+      <small class="text-muted">
+        Efficiency of the alternate electrical equipment.
+        <hr>
+      </small>
+    </h6>
+    <div class="w-100 d-flex justify-content-center">
+      <table class="table table-hover table-striped">
+        <tbody>
+          <tr>
+            <th class="w-50 text-center">Minimum</th>
+            <th class="w-50 text-center">Maximum</th>
+          </tr>
+          <tr>
+            <td class="w-50 text-center">0 %</td>
+            <td class="w-50 text-center">100 %</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="my-2" *ngIf="currentField == 'eGridRegion'">
+    <h6>
+      eGrid Region
+      <br>
+      <small class="text-muted">
+        <!--needed-->
+        <hr>
+      </small>
+    </h6>
+  </div>
+
+  <div class="my-2" *ngIf="currentField == 'eGridSubregion'">
+    <h6>
+      eGrid Subregion
+      <br>
+      <small class="text-muted">
+        <!--needed-->
+        <hr>
+      </small>
+    </h6>
+  </div>
+
+  <div class="my-2" *ngIf="currentField == 'emissionsOutputRateElectric'">
+    <h6>
+      Electric Equipment Emissions Output Rate
+      <br>
+      <small class="text-muted">
+        <!--needed-->
+        <hr>
+      </small>
+    </h6>
+  </div>
+
+</div>
