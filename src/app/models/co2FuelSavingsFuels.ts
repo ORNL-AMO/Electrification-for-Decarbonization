@@ -1,9 +1,13 @@
 export interface OtherFuel {
     energySource: string;
-    fuelTypes: Array<{
-        fuelType: string,
-        outputRate: number
-    }>;
+    fuelTypes: Array<FuelTypeProperties>;
+}
+
+export interface FuelTypeProperties {
+    fuelType: string,
+    carbonFactor: number,
+    methaneFactor: number,
+    nitrousFactor: number,
 }
 
 export const otherFuels: Array<OtherFuel> = [
@@ -12,7 +16,9 @@ export const otherFuels: Array<OtherFuel> = [
         fuelTypes: [
             {
                 fuelType: 'Steam & Hot Water',
-                outputRate: 66.33
+                carbonFactor: 66.33,
+                methaneFactor: 1.25,
+                nitrousFactor: .125,
             }
         ]
 
@@ -22,7 +28,9 @@ export const otherFuels: Array<OtherFuel> = [
         fuelTypes: [
             {
                 fuelType: 'Natural Gas',
-                outputRate: 53.06
+                carbonFactor: 53.06,
+                methaneFactor: 1,
+                nitrousFactor: .1,
             }
         ]
     },
@@ -31,7 +39,9 @@ export const otherFuels: Array<OtherFuel> = [
         fuelTypes: [
             {
                 fuelType: 'Liquified petroleum gases (LPG)',
-                outputRate: 61.71
+                carbonFactor: 61.71,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             }
         ]
 
@@ -41,23 +51,33 @@ export const otherFuels: Array<OtherFuel> = [
         fuelTypes: [
             {
                 fuelType: 'Distillate Fuel #2',
-                outputRate: 73.96
+                carbonFactor: 73.96,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Distillate Fuel #1',
-                outputRate: 73.25
+                carbonFactor: 73.25,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Distillate Fuel #4',
-                outputRate: 75.04
+                carbonFactor: 75.04,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Residual Fuel #6',
-                outputRate: 75.1
+                carbonFactor: 75.1,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Residual Fuel #5',
-                outputRate: 72.93
+                carbonFactor: 72.93,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
 
         ]
@@ -68,27 +88,39 @@ export const otherFuels: Array<OtherFuel> = [
         fuelTypes: [
             {
                 fuelType: 'Mixed - Industrial Sector',
-                outputRate: 94.67
+                carbonFactor: 94.67,
+                methaneFactor: 11,
+                nitrousFactor: 1.6,
             },
             {
                 fuelType: 'Anthracite',
-                outputRate: 103.69
+                carbonFactor: 103.69,
+                methaneFactor: 11,
+                nitrousFactor: 1.6,
             },
             {
                 fuelType: 'Bituminous',
-                outputRate: 93.28
+                carbonFactor: 93.28,
+                methaneFactor: 11,
+                nitrousFactor: 1.6,
             },
             {
                 fuelType: 'Subbituminous',
-                outputRate: 97.17
+                carbonFactor: 97.17,
+                methaneFactor: 11,
+                nitrousFactor: 1.6,
             },
             {
                 fuelType: 'Lignite',
-                outputRate: 97.72
+                carbonFactor: 97.72,
+                methaneFactor: 11,
+                nitrousFactor: 1.6,
             },
             {
                 fuelType: 'Mixed - Commercial',
-                outputRate: 94.27
+                carbonFactor: 94.27,
+                methaneFactor: 11,
+                nitrousFactor: 1.6,
             },
         ]
     },
@@ -97,67 +129,99 @@ export const otherFuels: Array<OtherFuel> = [
         fuelTypes: [
             {
                 fuelType: 'Coal (industrial coking)',
-                outputRate: 93.9
+                carbonFactor: 93.9,
+                methaneFactor: 11,
+                nitrousFactor: 1.6,
             },
             {
                 fuelType: 'Coal Coke',
-                outputRate: 113.67
+                carbonFactor: 113.67,
+                methaneFactor: 11,
+                nitrousFactor: 1.6,
             },
             {
                 fuelType: 'Petroleum Coke',
-                outputRate: 102.41
+                carbonFactor: 102.41,
+                methaneFactor: 32,
+                nitrousFactor: 4.2,
             },
             {
                 fuelType: 'Blast Furnace Gas',
-                outputRate: 274.32
+                carbonFactor: 274.32,
+                methaneFactor: .22,
+                nitrousFactor: .1,
             },
             {
                 fuelType: 'Still Gas',
-                outputRate: 66.72
+                carbonFactor: 66.72,
+                methaneFactor: 1,
+                nitrousFactor: .1,
             },
             {
                 fuelType: 'Coke Oven Gas',
-                outputRate: 46.85
+                carbonFactor: 46.85,
+                methaneFactor: .48,
+                nitrousFactor: .1,
             },
             {
                 fuelType: 'Crude Oil',
-                outputRate: 74.54
+                carbonFactor: 74.54,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Motor Gasoline',
-                outputRate: 70.22
+                carbonFactor: 70.22,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Propane',
-                outputRate: 62.87
+                carbonFactor: 62.87,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Propylene',
-                outputRate: 67.77
+                carbonFactor: 67.77,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Ethane',
-                outputRate: 59.6
+                carbonFactor: 59.6,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Ethylene',
-                outputRate: 65.96
+                carbonFactor: 65.96,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Isobutane',
-                outputRate: 64.94
+                carbonFactor: 64.94,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Butane',
-                outputRate: 64.77
+                carbonFactor: 64.77,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Pentanes Plus',
-                outputRate: 70.02
+                carbonFactor: 70.02,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             },
             {
                 fuelType: 'Kerosene',
-                outputRate: 75.2
+                carbonFactor: 75.2,
+                methaneFactor: 3,
+                nitrousFactor: .6,
             }
 
         ]
