@@ -13,6 +13,7 @@ import { OperatingHoursComponent } from './operating-hours/operating-hours.compo
 import { PlotlyViaWindowModule } from 'angular-plotly.js';
 
 import { GaugeComponent } from './results/gauge/gauge.component';
+import { BarComponent } from './results/bar/bar.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { GaugeComponent } from './results/gauge/gauge.component';
     ResultsComponent,
     HelpComponent,
     OperatingHoursComponent,
-    GaugeComponent
+    GaugeComponent,
+    BarComponent
   ],
   imports: [
     BrowserModule,
