@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ElectricalEquipment } from '../models/calculationData';
-import { eGridRegion, electricityGridRegions } from '../models/electricityGridRegions';
+import { eGridRegion, electricityGridRegions, SubRegionData } from '../models/electricityGridRegions';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -14,10 +14,7 @@ export class ElectricalEquipmentFormComponent implements OnInit {
 
   form: FormGroup;
   eGridRegions: Array<eGridRegion> = [];
-  subregions: Array<{
-    subregion: string,
-    outputRate: number
-  }> = [];
+  subregions: Array<SubRegionData> = [];
   equivalenHeatInput: number;
   potentialEmissions: number;
   potentialCosts: number;
@@ -65,7 +62,9 @@ export class ElectricalEquipmentFormComponent implements OnInit {
       "equipmentEfficiency": [obj.equipmentEfficiency, [Validators.min(0), Validators.max(100)]],
       "eGridRegion": [obj.eGridRegion],
       "eGridSubregion": [obj.eGridSubregion],
-      "emissionsOutputRate": [obj.emissionsOutputRate]
+      "carbonEmissions": [obj.carbonEmissions],
+      "methaneEmissions": [obj.methaneEmissions],
+      "nitrousEmissions": [obj.nitrousEmissions],
     });
   }
 
@@ -76,7 +75,9 @@ export class ElectricalEquipmentFormComponent implements OnInit {
       equipmentEfficiency: this.form.controls.equipmentEfficiency.value,
       eGridRegion: this.form.controls.eGridRegion.value,
       eGridSubregion: this.form.controls.eGridSubregion.value,
-      emissionsOutputRate: this.form.controls.emissionsOutputRate.value
+      carbonEmissions: this.form.controls.carbonEmissions.value,
+      methaneEmissions: this.form.controls.methaneEmissions.value,
+      nitrousEmissions: this.form.controls.nitrousEmissions.value
     });
   }
 
@@ -89,9 +90,11 @@ export class ElectricalEquipmentFormComponent implements OnInit {
     }
   }
   setSubRegion() {
-    let tmpSubRegion: { subregion: string, outputRate: number } = this.subregions.find((val) => { return this.form.controls.eGridSubregion.value == val.subregion; });
+    let tmpSubRegion: SubRegionData = this.subregions.find((val) => { return this.form.controls.eGridSubregion.value == val.subregion; });
     if (tmpSubRegion) {
-      this.form.controls.emissionsOutputRate.patchValue(tmpSubRegion.outputRate);
+      this.form.controls.carbonEmissions.patchValue(tmpSubRegion.carbonFactor);
+      this.form.controls.methaneEmissions.patchValue(tmpSubRegion.methaneFactor);
+      this.form.controls.nitrousEmissions.patchValue(tmpSubRegion.nitrousFactor);
       this.save()
     }
   }

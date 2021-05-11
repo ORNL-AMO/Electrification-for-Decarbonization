@@ -4,7 +4,9 @@ export interface FuelEquipment {
     fuelCost: number,
     equipmentEfficiency: number,
     heatInput: number,
-    emissionsOutputRate: number
+    carbonEmissions: number,
+    methaneEmissions: number,
+    nitrousEmissions: number,
 }
 
 export interface ElectricalEquipment {
@@ -12,7 +14,9 @@ export interface ElectricalEquipment {
     equipmentEfficiency: number,
     eGridRegion: string,
     eGridSubregion: string,
-    emissionsOutputRate: number
+    carbonEmissions: number,
+    methaneEmissions: number,
+    nitrousEmissions: number,
 }
 
 
@@ -27,8 +31,17 @@ export interface ResultsSummary{
 
 export interface EquipmentSummary {
     energyUseMMBtu: number,
-    energyUseKWh: number,
+    energyUseMWh: number,
     energyCost: number,
     co2Emissions: number,
+    co2EmissionsEquivelant: number,
     electricalDemandIncrease?: number
 }
+
+
+export interface EmissionsResults
+  { 
+    cost: number, 
+    emissions: number 
+    emissionsEquivelant: number 
+  }

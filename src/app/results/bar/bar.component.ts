@@ -64,7 +64,8 @@ export class BarComponent implements OnInit {
       let layout = {
         barmode: 'stack',
         font: {
-          family: "Helvetica Neue, sans-serif"
+          family: "Helvetica Neue, sans-serif",
+          size: 16
         },
         title: {
           font: {
@@ -72,13 +73,20 @@ export class BarComponent implements OnInit {
           }
         },
         xaxis: {
-          // font: {
-          //   size: 16
-          // }
+          tickfont: {
+            family: 'Helvetica Neue, sans-serif',
+            size: 18,
+            color: 'black'
+          },
         },
         yaxis: {
           ticksuffix: '%',
-          range: [-100, 100]
+          range: [-100, 100],
+          tickfont: {
+            family: 'Helvetica Neue, sans-serif',
+            size: 14,
+            color: 'black'
+          },
         },
         margin: { t: 50, b: 75, l: 75, r: 25 },
         // paper_bgcolor: "#efefef",

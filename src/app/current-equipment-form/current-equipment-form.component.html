@@ -59,15 +59,62 @@
             <span class="input-group-addon units small">MMBtu/hr</span>
         </div>
     </div>
-    <div class="form-group">
-        <label for="emissionsOutputRate">Total Emission Output Rate</label>
+
+    <div *ngIf="form.controls.energySource.value != 'Other fuels'" class="d-flex w-100">
+        <label class="w-50">
+            Carbon Emissions
+        </label>
+        <label class="w-50 text-center">
+            {{form.controls.carbonEmissions.value | number:"0.0-2"}} kg CO<sub>2</sub>/MMBtu
+        </label>
+    </div>
+    <div *ngIf="form.controls.energySource.value == 'Other fuels'" class="form-group">
+        <label for="carbonEmissions">Carbon Emissions</label>
         <div class="input-group">
-            <input name="emissionsOutputRate" type="number" step=".1" class="form-control" id="emissionsOutputRate"
-                (input)="save()" formControlName="emissionsOutputRate" onfocus="this.select();"
+            <input name="carbonEmissions" type="number" step=".1" class="form-control" id="carbonEmissions"
+                (input)="save()" formControlName="carbonEmissions" onfocus="this.select();"
                 (focus)="focusField('emissionsOutputRateFuel')">
             <span class="input-group-addon units small">kg CO<sub>2</sub>/MMBtu</span>
         </div>
     </div>
+
+    <div *ngIf="form.controls.energySource.value != 'Other fuels'" class="d-flex w-100">
+        <label class="w-50">
+            Methane Emissions
+        </label>
+        <label class="w-50 text-center">
+            {{form.controls.methaneEmissions.value | number:"0.0-2"}} g CH<sub>4</sub>/MMBtu
+        </label>
+    </div>
+    <div *ngIf="form.controls.energySource.value == 'Other fuels'" class="form-group">
+        <label for="methaneEmissions">Methane Emissions</label>
+        <div class="input-group">
+            <input name="methaneEmissions" type="number" step=".1" class="form-control" id="methaneEmissions"
+                (input)="save()" formControlName="methaneEmissions" onfocus="this.select();"
+                (focus)="focusField('emissionsOutputRateFuel')">
+            <span class="input-group-addon units small">g CH<sub>4</sub>/MMBtu</span>
+        </div>
+    </div>
+
+
+    <div *ngIf="form.controls.energySource.value != 'Other fuels'" class="d-flex w-100">
+        <label class="w-50">
+            Nitrous Oxide Emissions
+        </label>
+        <label class="w-50 text-center">
+            {{form.controls.nitrousEmissions.value | number:"0.0-2"}} g NO<sub>2</sub>/MMBtu
+        </label>
+    </div>
+    <div *ngIf="form.controls.energySource.value == 'Other fuels'" class="form-group">
+        <label for="nitrousEmissions">Current Nitrous Oxide Emission Rate</label>
+        <div class="input-group">
+            <input name="nitrousEmissions" type="number" step=".1" class="form-control" id="nitrousEmissions"
+                (input)="save()" formControlName="nitrousEmissions" onfocus="this.select();"
+                (focus)="focusField('emissionsOutputRateFuel')">
+            <span class="input-group-addon units small">g NO<sub>2</sub>/MMBtu</span>
+        </div>
+    </div>
+
 </form>
 
 <div class="d-flex w-100 pl-3 pr-3">
