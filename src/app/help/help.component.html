@@ -2,31 +2,27 @@
   <h5>
     Electrification for Decarbonization Help
     <br>
-    <small class="text-muted">Use this calcualtor to estimate potential cost and CO<sub>2</sub> emissions savings
+    <small class="text-muted text-left">Use this calculator to estimate potential cost and CO<sub>2</sub> emissions savings
       resulting from
       changing from fuel based equipment to electrical equipment.
-      <br>
-      Enter the facility’s region for electricity or the fuel type and the electricity use
-      or fuel energy. The emission output rate can be edited, but will return to the default value when the
-      electricity/fuel options are changed.
-      <br>
-      Emission Output Rates were obtained from the EPA and the Electronic Code of Federal Regulations.
+      <br><br>
+      Enter the current fuel type and fuel energy. Select eGrid region where the electricity provider is located. 
+      The emission output rate can be edited, but will return to the default value when the electricity/fuel options are changed.
+      <br><br>
+      Emission Output Rates were obtained from the EPA and the Electronic Code of Federal Regulations. eGRID output emission rates do not account for any line 
+      losses between the points of consumption and the points of generation. For example, 
+      because there are line losses, one kilowatt hour of electricity consumption requires a 
+      little more than one kilowatt hour of electricity generation. To account for transmission 
+      and distribution line losses when applying eGRID output emission rates to electricity 
+      consumption within a certain region, consumption is divided by (one minus the grid gross 
+      loss [as a decimal]).
     </small>
-    <hr>
   </h5>
   <h6>
     <small class="text-muted">
-      <a href="https://www.epa.gov/energy/emissions-generation-resource-integrated-database-egrid" target="_blank">
-        US EPA Emissions & Generation Resource Integrate Database (eGRID)</a>
+        <a href="https://www.epa.gov/sites/production/files/2021-04/documents/emission-factors_mar2020.pdf" target="_blank">
+          US EPA Emissions Factors for Greenhouse Gas Inventories (PDF)</a>
       <br>
-      <hr>
-      <a href="https://www.epa.gov/sites/production/files/2015-07/documents/emission-factors_2014.pdf" target="_blank">
-        US EPA Emissions Factors for Greenhouse Gas Inventories (PDF)</a>
-      <br>
-      <hr>
-      <a href="https://www.ecfr.gov/cgi-bin/text-idx?SID=5918762f070a5581dfde66942e2e91e6&mc=true&node=ap40.23.98_138.1&rgn=div9"
-        target="_blank">
-        e-CFR Default CO<sub>2</sub> Emission Factors for Various Types of Fuel</a>
     </small>
   </h6>
   <hr class="my-1 hr-spacer">
@@ -179,11 +175,49 @@
   <div class="my-2" *ngIf="currentField == 'eGridRegion'">
     <h6>
       eGrid Region
-      <br>
-      <small class="text-muted">
-        <!--needed-->
-        <hr>
+      <hr>
+      <small class="bold">
+        eGRID2019 Grid Gross Loss (%)
       </small>
+      <div class="w-100 d-flex justify-content-center">
+        <table class="table table-hover table-striped">
+          <tbody>
+            <tr>
+              <th class="w-50 text-center">Power Grid</th>
+              <th class="w-50 text-center">Grid Gross Loss (%)</th>
+            </tr>
+            <tr>
+              <td class="w-50 text-left">Eastern</td>
+              <td class="w-50 text-center">5.4%</td>
+            </tr>
+            <tr>
+              <td class="w-50 text-left">Western</td>
+              <td class="w-50 text-center">5.1%</td>
+            </tr>
+            <tr>
+              <td class="w-50 text-left">ERCOT</td>
+              <td class="w-50 text-center">5.1%</td>
+            </tr>
+            <tr>
+              <td class="w-50 text-left">Alaska</td>
+              <td class="w-50 text-center">5.5%</td>
+            </tr>
+            <tr>
+              <td class="w-50 text-left">Hawaii</td>
+              <td class="w-50 text-center">5.1%</td>
+            </tr>
+            <tr>
+              <td class="w-50 bold text-left">US</td>
+              <td class="w-50 bold text-center">5.1%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+        <small class="text-muted">
+            <a href="https://www.epa.gov/sites/production/files/2021-02/documents/egrid2019_technical_guide.pdf" target="_blank">
+              eGRID Technical Guide with Year 2019 Data</a>
+          <br>
+        </small>
     </h6>
   </div>
 

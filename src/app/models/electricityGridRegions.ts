@@ -1,9 +1,13 @@
 export interface eGridRegion {
     region: string;
-    subregions: Array<{
-        subregion: string,
-        outputRate: number
-    }>;
+    subregions: Array<SubRegionData>;
+}
+
+export interface SubRegionData {
+    subregion: string,
+    carbonFactor: number,
+    methaneFactor: number,
+    nitrousFactor: number
 }
 
 export const electricityGridRegions: Array<eGridRegion> = [
@@ -12,7 +16,9 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'U.S. Average',
-                outputRate: 432.2286834
+                carbonFactor: 429.6,
+                methaneFactor: 38.56,
+                nitrousFactor: 5.443
             }
         ]
     },
@@ -21,11 +27,15 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'AKGD: ASCC Alaska Grid',
-                outputRate: 474.0045904
+                carbonFactor: 471.6,
+                methaneFactor: 37.19,
+                nitrousFactor: 4.99
             },
             {
                 subregion: 'AKMS: ASCC Miscellaneous',
-                outputRate: 239.0434633
+                carbonFactor: 4.99,
+                methaneFactor: 10.89,
+                nitrousFactor: 1.814
             }
         ]
     },
@@ -34,7 +44,9 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'ERCT: ERCOT All',
-                outputRate: 424.6083225
+                carbonFactor: 422.6,
+                methaneFactor: 29.94,
+                nitrousFactor: 4.082
             }
         ]
     },
@@ -43,7 +55,9 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'FRCC: FRCC All',
-                outputRate: 424.6083225
+                carbonFactor: 422.7,
+                methaneFactor: 29.94,
+                nitrousFactor: 4.082
             }
         ]
     },
@@ -52,11 +66,15 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'HIMS: HICC Miscellaneous',
-                outputRate: 507.6158249
+                carbonFactor: 503.8,
+                methaneFactor: 53.52,
+                nitrousFactor: 8.165
             },
             {
                 subregion: 'HIOA: HICC Oahu',
-                outputRate: 763.2154294
+                carbonFactor: 757.5,
+                methaneFactor: 81.65,
+                nitrousFactor: 12.247
             }
         ]
     },
@@ -65,11 +83,15 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'MROE: MRO East',
-                outputRate: 766.4359391
+                carbonFactor: 761.1,
+                methaneFactor: 76.66,
+                nitrousFactor: 11.34
             },
             {
                 subregion: 'MROW: MRO West',
-                outputRate: 566.6282625
+                carbonFactor: 562.4,
+                methaneFactor: 62.6,
+                nitrousFactor: 9.072
             }
         ]
     },
@@ -78,19 +100,27 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'NEWE: NPCC New England',
-                outputRate: 239.315619
+                carbonFactor: 236.9,
+                methaneFactor: 37.19,
+                nitrousFactor: 4.99
             },
             {
                 subregion: 'NYCW: NPCC NYC/Westchester',
-                outputRate: 302.5181949
+                carbonFactor: 270.5,
+                methaneFactor: 9.98,
+                nitrousFactor: 1.361
             },
             {
                 subregion: 'NYLI: NPCC Long Island',
-                outputRate: 541.1817002
+                carbonFactor: 537.1,
+                methaneFactor: 63.05,
+                nitrousFactor: 8.165
             },
             {
                 subregion: 'NYUP: NPCC Upstate NY',
-                outputRate: 115.1672397
+                carbonFactor: 114.8,
+                methaneFactor: 8.16,
+                nitrousFactor: 0.907
             },
         ]
     },
@@ -99,15 +129,21 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'RFCE: RFC East',
-                outputRate: 326.5868948
+                carbonFactor: 324.8,
+                methaneFactor: 27.67,
+                nitrousFactor: 3.629
             },
             {
                 subregion: 'RFCM: RFC Michigan',
-                outputRate: 599.2869519
+                carbonFactor: 595.4,
+                methaneFactor: 58.51,
+                nitrousFactor: 8.165
             },
             {
                 subregion: 'RFCW: RFC West',
-                outputRate: 532.5180757
+                carbonFactor: 528.9,
+                methaneFactor: 53.07,
+                nitrousFactor: 7.711
             }
         ]
     },
@@ -116,23 +152,33 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'SRMV: SERC Mississippi Valley',
-                outputRate: 389.3641535
+                carbonFactor: 387.6,
+                methaneFactor: 24.95,
+                nitrousFactor: 3.629
             },
             {
                 subregion: 'SRMW: SERC Midwest',
-                outputRate: 760.5845905
+                carbonFactor: 754.9,
+                methaneFactor: 83.91,
+                nitrousFactor: 12.247
             },
             {
                 subregion: 'SRSO: SERC South',
-                outputRate: 468.7882719
+                carbonFactor: 466.2,
+                methaneFactor: 36.74,
+                nitrousFactor: 5.443
             },
             {
                 subregion: 'SRTV: SERC Tennessee Valley',
-                outputRate: 470.8747993
+                carbonFactor: 467.9,
+                methaneFactor: 44,
+                nitrousFactor: 6.35
             },
             {
                 subregion: 'SRVC: SERC Virginia/Carolina',
-                outputRate: 339.0606998
+                carbonFactor: 337.2,
+                methaneFactor: 30.39,
+                nitrousFactor: 4.082
             }
         ]
     },
@@ -141,11 +187,15 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'SPNO: SPP North',
-                outputRate: 531.4294527
+                carbonFactor: 527.6,
+                methaneFactor: 56.25,
+                nitrousFactor: 8.165
             },
             {
                 subregion: 'SPSO: SPP South',
-                outputRate: 531.9737642
+                carbonFactor: 529.2,
+                methaneFactor: 41.28,
+                nitrousFactor: 5.897
             }
         ]
     },
@@ -154,21 +204,33 @@ export const electricityGridRegions: Array<eGridRegion> = [
         subregions: [
             {
                 subregion: 'AZNM: WECC Southwest',
-                outputRate: 466.0667144
+                carbonFactor: 463.8,
+                methaneFactor: 34.93,
+                nitrousFactor: 4.99
             },
             {
                 subregion: 'CAMX: WECC California',
-                outputRate: 226.2067839
+                carbonFactor: 225.2,
+                methaneFactor: 15.42,
+                nitrousFactor: 1.814
             },
             {
 
                 subregion: 'NWPP: WECC Northwest',
-                outputRate: 291.8416779
+                carbonFactor: 289.8,
+                methaneFactor: 29.03,
+                nitrousFactor: 4.082
             },
             {
                 subregion: 'RMPA: WECC Rockies',
-                outputRate: 581.4607506
+                carbonFactor: 577.7,
+                methaneFactor: 55.79,
+                nitrousFactor: 8.165
             }
         ]
+    },
+    {
+        region: 'Other',
+        subregions: []
     }
 ];
