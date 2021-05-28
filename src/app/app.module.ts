@@ -14,6 +14,7 @@ import { PlotlyViaWindowModule } from 'angular-plotly.js';
 
 import { GaugeComponent } from './results/gauge/gauge.component';
 import { BarComponent } from './results/bar/bar.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { BarComponent } from './results/bar/bar.component';
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    PlotlyViaWindowModule
+    PlotlyViaWindowModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

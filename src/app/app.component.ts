@@ -1,4 +1,8 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router'; 
+
+// declare ga as a function to access the JS code in TS
+declare let gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -21,9 +25,17 @@ export class AppComponent {
   }
   headerHeight: number;
 
-  constructor() {
-
-  }
+  constructor(public router: Router){   
+    this.router.events.subscribe(event => {
+       if(event instanceof NavigationEnd){
+           gtag('config', 'G-YNYS5F66B1', 
+                 {
+                   'page_path': event.urlAfterRedirects
+                 }
+                );
+        }
+     }
+  )}
 
   ngOnInit() {
     setTimeout(() => {
