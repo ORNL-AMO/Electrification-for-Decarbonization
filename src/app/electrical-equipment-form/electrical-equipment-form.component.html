@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div *ngIf="form.controls.eGridRegion.value != 'Other'" class="form-group">
+    <div *ngIf="form.controls.eGridRegion.value != 'Other' && form.controls.eGridRegion.value != 'PV/Wind' " class="form-group">
         <label for="eGridSubregion">eGrid Subregion</label>
         <div class="input-group">
             <select name="eGridSubregion" class="form-control" id="fuelType" formControlName="eGridSubregion"
