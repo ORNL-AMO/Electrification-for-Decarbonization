@@ -230,10 +230,10 @@ export const electricityGridRegions: Array<eGridRegion> = [
         ]
     },
     {
-        region: 'PV',
+        region: 'PV/Wind',
         subregions: [
             {
-                subregion: 'Wind',
+                subregion: '',
                 carbonFactor: 0,
                 methaneFactor: 0,
                 nitrousFactor: 0

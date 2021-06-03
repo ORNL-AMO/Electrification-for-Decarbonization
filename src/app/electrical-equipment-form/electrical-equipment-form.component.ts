@@ -85,8 +85,10 @@ export class ElectricalEquipmentFormComponent implements OnInit {
     let tmpRegion: eGridRegion = this.eGridRegions.find((val) => { return this.form.controls.eGridRegion.value == val.region; });
     if (tmpRegion) {
       this.subregions = tmpRegion.subregions;
-      this.form.controls.eGridSubregion.patchValue(this.subregions[0].subregion);
-      this.setSubRegion();
+      if (this.subregions.length != 0) {
+        this.form.controls.eGridSubregion.patchValue(this.subregions[0].subregion);
+        this.setSubRegion();
+      }
     }
   }
   setSubRegion() {
@@ -99,7 +101,7 @@ export class ElectricalEquipmentFormComponent implements OnInit {
     }
   }
 
-  focusField(str: string){
+  focusField(str: string) {
     this.dataService.currentField.next(str);
   }
 }
