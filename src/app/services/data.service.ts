@@ -17,7 +17,7 @@ export class DataService {
   currentField: BehaviorSubject<string>;
 
   constructor() {
-    this.operatingHours = new BehaviorSubject<number>(1000);
+    this.operatingHours = new BehaviorSubject<number>(8760);
     this.fuelEquipment = new BehaviorSubject<FuelEquipment>({
       energySource: undefined,
       fuelType: undefined,
@@ -45,11 +45,11 @@ export class DataService {
   }
 
   setExampleData() {
-    this.operatingHours.next(1000);
+    this.operatingHours.next(8760);
     this.fuelEquipment.next({
       energySource: 'Natural Gas',
       fuelType: 'Natural Gas',
-      fuelCost: 8,
+      fuelCost: 4,
       equipmentEfficiency: 60,
       heatInput: 10,
       carbonEmissions: 53.06,
