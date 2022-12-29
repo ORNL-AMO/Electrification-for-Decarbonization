@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { DataService } from '../services/data.service';
@@ -21,14 +21,14 @@ import { DataService } from '../services/data.service';
 export class OperatingHoursComponent implements OnInit {
 
   @ViewChild('formElement', { static: false }) formElement: ElementRef;
-  form: FormGroup;
+  form: UntypedFormGroup;
   operatingHoursSub: Subscription;
-  operatingHoursForm: FormGroup;
+  operatingHoursForm: UntypedFormGroup;
   showModal: string = 'hide';
   calculatedHoursPerYear: number = 8760;
   modalWidth: number;
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
+  constructor(private formBuilder: UntypedFormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {
     let operatingHours: number = this.dataService.operatingHours.getValue();
