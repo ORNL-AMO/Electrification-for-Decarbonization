@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ElectricalEquipment } from '../models/calculationData';
 import { eGridRegion, electricityGridRegions, SubRegionData } from '../models/electricityGridRegions';
@@ -12,7 +12,7 @@ import { DataService } from '../services/data.service';
 })
 export class ElectricalEquipmentFormComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   eGridRegions: Array<eGridRegion> = [];
   subregions: Array<SubRegionData> = [];
   equivalenHeatInput: number;
@@ -24,7 +24,7 @@ export class ElectricalEquipmentFormComponent implements OnInit {
   electricalHeatInputSub: Subscription;
   electricalEquipmentSub: Subscription;
   isFormChangeUpdate: boolean = false;
-  constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
+  constructor(private formBuilder: UntypedFormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.eGridRegions = electricityGridRegions;
@@ -56,7 +56,7 @@ export class ElectricalEquipmentFormComponent implements OnInit {
   }
 
 
-  getFormFromObj(obj: ElectricalEquipment): FormGroup {
+  getFormFromObj(obj: ElectricalEquipment): UntypedFormGroup {
     return this.formBuilder.group({
       "electricityCost": [obj.electricityCost],
       "equipmentEfficiency": [obj.equipmentEfficiency, [Validators.min(0), Validators.max(100)]],

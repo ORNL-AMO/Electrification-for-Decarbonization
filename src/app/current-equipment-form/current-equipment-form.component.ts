@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FuelEquipment } from '../models/calculationData';
 import { FuelTypeProperties, OtherFuel, otherFuels } from '../models/co2FuelSavingsFuels';
@@ -12,7 +12,7 @@ import { DataService } from '../services/data.service';
 })
 export class CurrentEquipmentFormComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   fuelOptions: Array<FuelTypeProperties> = [];
   otherFuels: Array<OtherFuel> = [];
   currentEmissions: number;
@@ -22,7 +22,7 @@ export class CurrentEquipmentFormComponent implements OnInit {
 
   fuelEquipmentSub: Subscription;
   isFormChangeUpdate: boolean = false;
-  constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
+  constructor(private formBuilder: UntypedFormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.otherFuels = otherFuels;
@@ -50,7 +50,7 @@ export class CurrentEquipmentFormComponent implements OnInit {
   }
 
 
-  getFormFromObj(obj: FuelEquipment): FormGroup {
+  getFormFromObj(obj: FuelEquipment): UntypedFormGroup {
     return this.formBuilder.group({
       // "energyType": [],
       "energySource": [obj.energySource],
