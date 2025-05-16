@@ -6,9 +6,10 @@ import { eGridRegion, electricityGridRegions, SubRegionData } from '../models/el
 import { DataService } from '../services/data.service';
 
 @Component({
-  selector: 'app-electrical-equipment-form',
-  templateUrl: './electrical-equipment-form.component.html',
-  styleUrls: ['./electrical-equipment-form.component.css']
+    selector: 'app-electrical-equipment-form',
+    templateUrl: './electrical-equipment-form.component.html',
+    styleUrls: ['./electrical-equipment-form.component.css'],
+    standalone: false
 })
 export class ElectricalEquipmentFormComponent implements OnInit {
 

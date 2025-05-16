@@ -3,9 +3,10 @@ import { PlotlyService } from 'angular-plotly.js';
 import { ResultsSummary } from 'src/app/models/calculationData';
 
 @Component({
-  selector: 'app-bar',
-  templateUrl: './bar.component.html',
-  styleUrls: ['./bar.component.css']
+    selector: 'app-bar',
+    templateUrl: './bar.component.html',
+    styleUrls: ['./bar.component.css'],
+    standalone: false
 })
 export class BarComponent implements OnInit {
 
