@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Electrification-For-Decarbonization:build"
+            "buildTarget": "Electrification-For-Decarbonization:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Electrification-For-Decarbonization:build:production"
+              "buildTarget": "Electrification-For-Decarbonization:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Electrification-For-Decarbonization:build"
+            "buildTarget": "Electrification-For-Decarbonization:build"
           }
         },
         "test": {
