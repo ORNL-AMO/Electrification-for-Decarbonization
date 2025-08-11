@@ -6,9 +6,10 @@ import { FuelTypeProperties, OtherFuel, otherFuels } from '../models/co2FuelSavi
 import { DataService } from '../services/data.service';
 
 @Component({
-  selector: 'app-current-equipment-form',
-  templateUrl: './current-equipment-form.component.html',
-  styleUrls: ['./current-equipment-form.component.css']
+    selector: 'app-current-equipment-form',
+    templateUrl: './current-equipment-form.component.html',
+    styleUrls: ['./current-equipment-form.component.css'],
+    standalone: false
 })
 export class CurrentEquipmentFormComponent implements OnInit {
 

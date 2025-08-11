@@ -5,18 +5,19 @@ import { Subscription } from 'rxjs';
 import { DataService } from '../services/data.service';
 
 @Component({
-  selector: 'app-operating-hours',
-  templateUrl: './operating-hours.component.html',
-  styleUrls: ['./operating-hours.component.css'],
-  animations: [
-    trigger('modal', [
-      state('show', style({
-        top: '50px'
-      })),
-      transition('hide => show', animate('.5s ease-in')),
-      transition('show => hide', animate('.5s ease-out'))
-    ])
-  ]
+    selector: 'app-operating-hours',
+    templateUrl: './operating-hours.component.html',
+    styleUrls: ['./operating-hours.component.css'],
+    animations: [
+        trigger('modal', [
+            state('show', style({
+                top: '50px'
+            })),
+            transition('hide => show', animate('.5s ease-in')),
+            transition('show => hide', animate('.5s ease-out'))
+        ])
+    ],
+    standalone: false
 })
 export class OperatingHoursComponent implements OnInit {
 

@@ -4,9 +4,10 @@ import { FuelEquipment, ResultsSummary } from '../models/calculationData';
 import { DataService } from '../services/data.service';
 
 @Component({
-  selector: 'app-results',
-  templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css']
+    selector: 'app-results',
+    templateUrl: './results.component.html',
+    styleUrls: ['./results.component.css'],
+    standalone: false
 })
 export class ResultsComponent implements OnInit {
 

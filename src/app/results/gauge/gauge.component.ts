@@ -2,9 +2,10 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { PlotlyService } from 'angular-plotly.js';
 
 @Component({
-  selector: 'app-gauge',
-  templateUrl: './gauge.component.html',
-  styleUrls: ['./gauge.component.css']
+    selector: 'app-gauge',
+    templateUrl: './gauge.component.html',
+    styleUrls: ['./gauge.component.css'],
+    standalone: false
 })
 export class GaugeComponent implements OnInit {
   @Input()
