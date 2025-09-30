@@ -1,5 +1,6 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, WritableSignal, inject  } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router'; 
+import { DataService } from './services/data.service';
 
 // declare ga as a function to access the JS code in TS
 declare let gtag: Function;
@@ -11,6 +12,7 @@ declare let gtag: Function;
     standalone: false
 })
 export class AppComponent {
+  private dataService = inject(DataService);
   title = 'Electrification-For-Decarbonization';
 
   tabSelect: string = "results";
@@ -25,6 +27,7 @@ export class AppComponent {
       this.resizeTabs();
   }
   headerHeight: number;
+  showEmissionRateInformation: WritableSignal<boolean> = this.dataService.showEmissionRateInformation;
 
   constructor(public router: Router){   
     this.router.events.subscribe(event => {
@@ -42,6 +45,10 @@ export class AppComponent {
     setTimeout(() => {
       this.resizeTabs();
     }, 10);
+  }
+
+  toggleEmissionRateInformation() {
+    this.showEmissionRateInformation.set(!this.showEmissionRateInformation());
   }
 
 

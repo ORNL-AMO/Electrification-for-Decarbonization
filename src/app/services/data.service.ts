@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { FuelEquipment, ElectricalEquipment, ResultsSummary, EquipmentSummary, EmissionsResults } from '../models/calculationData';
 
@@ -15,6 +15,7 @@ export class DataService {
   electricalCostAndEmissions: BehaviorSubject<EmissionsResults>;
   summary: BehaviorSubject<ResultsSummary>;
   currentField: BehaviorSubject<string>;
+  showEmissionRateInformation: WritableSignal<boolean> = signal(false);
 
   constructor() {
     this.operatingHours = new BehaviorSubject<number>(8760);

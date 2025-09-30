@@ -40,3 +40,12 @@
       cursor: pointer;
       background-color: #fff;
   }
+
+  .click-link:hover {
+      text-decoration: underline;
+      cursor: pointer;
+  }
+
+  .group-label {
+      width: inherit;
+  }

@@ -39,7 +39,8 @@
         </div>
     </div>
 
-    <div *ngIf="form.controls.eGridRegion.value != 'Other' && form.controls.eGridRegion.value != 'PV/Wind' " class="form-group">
+    <div *ngIf="form.controls.eGridRegion.value != 'Other' && form.controls.eGridRegion.value != 'PV/Wind' "
+        class="form-group">
         <label for="eGridSubregion">eGrid Subregion</label>
         <div class="input-group">
             <select name="eGridSubregion" class="form-control" id="fuelType" formControlName="eGridSubregion"
@@ -49,74 +50,80 @@
         </div>
     </div>
 
-    <div *ngIf="form.controls.eGridRegion.value != 'Other'" class="d-flex w-100">
+    <div *ngIf="showEmissionRateInformation()" class="ml-3 p-3">
+        <label class="group-label">Emission Rates</label>
+        <div *ngIf="form.controls.eGridRegion.value != 'Other'" class="d-flex w-100">
+            <label class="w-50">
+                CO<sub>2</sub> Rate
+            </label>
+            <label class="w-50 text-center">
+                {{form.controls.carbonEmissions.value | number:"0.0-2"}} kg CO<sub>2</sub>/MWh
+            </label>
+        </div>
+        <div *ngIf="form.controls.eGridRegion.value == 'Other'" class="form-group">
+            <label for="carbonEmissions">CO<sub>2</sub> Rate</label>
+            <div class="input-group">
+                <input name="carbonEmissions" type="number" step=".1" class="form-control" id="carbonEmissions"
+                    (input)="save()" formControlName="carbonEmissions" onfocus="this.select();"
+                    (focus)="focusField('emissionsOutputRateElectric')">
+                <span class="input-group-addon units small">kg CO<sub>2</sub>/MWh</span>
+            </div>
+        </div>
+
+        <div *ngIf="form.controls.eGridRegion.value != 'Other'" class="d-flex w-100">
+            <label class="w-50">
+                Methane Rate
+            </label>
+            <label class="w-50 text-center">
+                {{form.controls.methaneEmissions.value | number:"0.0-2"}} g CH<sub>4</sub>/MWh
+            </label>
+        </div>
+        <div *ngIf="form.controls.eGridRegion.value == 'Other'" class="form-group">
+            <label for="methaneEmissions">Methane Rate</label>
+            <div class="input-group">
+                <input name="methaneEmissions" type="number" step=".1" class="form-control" id="methaneEmissions"
+                    (input)="save()" formControlName="methaneEmissions" onfocus="this.select();"
+                    (focus)="focusField('emissionsOutputRateElectric')">
+                <span class="input-group-addon units small">g CH<sub>4</sub>/MWh</span>
+            </div>
+        </div>
+
+        <div *ngIf="form.controls.eGridRegion.value != 'Other'" class="d-flex w-100">
+            <label class="w-50">
+                Nitrous Rate
+            </label>
+            <label class="w-50 text-center">
+                {{form.controls.nitrousEmissions.value | number:"0.0-2"}} g N<sub>2</sub>O/MWh
+            </label>
+        </div>
+        <div *ngIf="form.controls.eGridRegion.value == 'Other'" class="form-group">
+            <label for="nitrousEmissions">CO<sub>2</sub> Rate</label>
+            <div class="input-group">
+                <input name="nitrousEmissions" type="number" step=".1" class="form-control" id="nitrousEmissions"
+                    (input)="save()" formControlName="nitrousEmissions" onfocus="this.select();"
+                    (focus)="focusField('emissionsOutputRateElectric')">
+                <span class="input-group-addon units small">g N<sub>2</sub>O/MWh</span>
+            </div>
+        </div>
+ <div class="d-flex w-100">
         <label class="w-50">
-            Carbon Emissions
+           Total Potential CO<sub>2</sub> Rate
         </label>
         <label class="w-50 text-center">
-            {{form.controls.carbonEmissions.value | number:"0.0-2"}} kg CO<sub>2</sub>/MWh
+            {{electricalCostAndEmissions.emissions | number:"0.0-2"}} tonne CO<sub>2</sub>/yr
         </label>
-    </div>
-    <div *ngIf="form.controls.eGridRegion.value == 'Other'" class="form-group">
-        <label for="carbonEmissions">Carbon Emissions</label>
-        <div class="input-group">
-            <input name="carbonEmissions" type="number" step=".1" class="form-control" id="carbonEmissions"
-                (input)="save()" formControlName="carbonEmissions" onfocus="this.select();"
-                (focus)="focusField('emissionsOutputRateElectric')">
-            <span class="input-group-addon units small">kg CO<sub>2</sub>/MWh</span>
-        </div>
     </div>
 
-    <div *ngIf="form.controls.eGridRegion.value != 'Other'" class="d-flex w-100">
-        <label class="w-50">
-            Methane Emissions
-        </label>
-        <label class="w-50 text-center">
-            {{form.controls.methaneEmissions.value | number:"0.0-2"}} g CH<sub>4</sub>/MWh
-        </label>
-    </div>
-    <div *ngIf="form.controls.eGridRegion.value == 'Other'" class="form-group">
-        <label for="methaneEmissions">Methane Emissions</label>
-        <div class="input-group">
-            <input name="methaneEmissions" type="number" step=".1" class="form-control" id="methaneEmissions"
-                (input)="save()" formControlName="methaneEmissions" onfocus="this.select();"
-                (focus)="focusField('emissionsOutputRateElectric')">
-            <span class="input-group-addon units small">g CH<sub>4</sub>/MWh</span>
-        </div>
+
     </div>
 
-    <div *ngIf="form.controls.eGridRegion.value != 'Other'" class="d-flex w-100">
-        <label class="w-50">
-            Nitrous Emissions
-        </label>
-        <label class="w-50 text-center">
-            {{form.controls.nitrousEmissions.value | number:"0.0-2"}} g N<sub>2</sub>O/MWh
-        </label>
-    </div>
-    <div *ngIf="form.controls.eGridRegion.value == 'Other'" class="form-group">
-        <label for="nitrousEmissions">Carbon Emissions</label>
-        <div class="input-group">
-            <input name="nitrousEmissions" type="number" step=".1" class="form-control" id="nitrousEmissions"
-                (input)="save()" formControlName="nitrousEmissions" onfocus="this.select();"
-                (focus)="focusField('emissionsOutputRateElectric')">
-            <span class="input-group-addon units small">g N<sub>2</sub>O/MWh</span>
-        </div>
-    </div>
 
 
 </form>
 
 <div class="d-flex w-100 pl-3 pr-3">
     <label class="w-50">
-        Potential CO<sub>2</sub> Emissions
-    </label>
-    <label class="w-50 text-center">
-        {{electricalCostAndEmissions.emissions | number:"0.0-2"}} tonne CO<sub>2</sub>/yr
-    </label>
-</div>
-<div class="d-flex w-100 pl-3 pr-3">
-    <label class="w-50">
-        Potential Electricity Costs
+        Total Potential Electricity Costs
     </label>
     <label class="w-50 text-center">
         {{electricalCostAndEmissions.cost | currency: 'USD': 'symbol':'0.0-0'}} /yr

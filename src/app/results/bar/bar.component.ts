@@ -1,6 +1,7 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, inject, WritableSignal, effect } from '@angular/core';
 import { PlotlyService } from 'angular-plotly.js';
 import { ResultsSummary } from 'src/app/models/calculationData';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
     selector: 'app-bar',
@@ -9,7 +10,7 @@ import { ResultsSummary } from 'src/app/models/calculationData';
     standalone: false
 })
 export class BarComponent implements OnInit {
-
+  private dataService = inject(DataService);
   @Input()
   summary: ResultsSummary;
   @Input()
@@ -17,7 +18,14 @@ export class BarComponent implements OnInit {
 
   @ViewChild('barChart', { static: false }) barChart: ElementRef;
 
-  constructor(private plotlyService: PlotlyService) { }
+  showEmissionRateInformation: WritableSignal<boolean> = this.dataService.showEmissionRateInformation;
+  constructor(private plotlyService: PlotlyService) {
+
+    effect(() => {
+      const _ = this.showEmissionRateInformation();
+      this.drawChart();
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -37,13 +45,18 @@ export class BarComponent implements OnInit {
         displayModeBar: false,
         responsive: true
       };
-      let barNames = ['Energy Reduction', 'Cost Reduction', 'CO&#8322; Reduction'];
 
       let barValues = [
         this.getNegativeLimit(this.summary.percentEnergyReduction), 
         this.getNegativeLimit(this.summary.percentCostReduction), 
-        this.getNegativeLimit(this.summary.percentCO2Reduction)
       ];
+
+      let barNames = ['Energy Reduction', 'Cost Reduction'];
+      if (this.showEmissionRateInformation()) {
+        barNames.push('CO&#8322; Reduction');
+        barValues.push(this.getNegativeLimit(this.summary.percentCO2Reduction));
+      }
+      
 
       let resultTrace = {
         x: barNames,
