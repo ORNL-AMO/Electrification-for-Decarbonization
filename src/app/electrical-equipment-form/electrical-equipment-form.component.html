@@ -29,29 +29,28 @@
         </label>
     </div>
 
-    <div class="form-group">
-        <label for="eGridRegion">eGrid Region</label>
-        <div class="input-group">
-            <select name="eGridRegion" class="form-control" id="eGridRegion" formControlName="eGridRegion"
-                (change)="setRegion()" (focus)="focusField('eGridRegion')">
-                <option *ngFor="let option of eGridRegions" [ngValue]="option.region">{{option.region}}</option>
-            </select>
-        </div>
-    </div>
-
-    <div *ngIf="form.controls.eGridRegion.value != 'Other' && form.controls.eGridRegion.value != 'PV/Wind' "
-        class="form-group">
-        <label for="eGridSubregion">eGrid Subregion</label>
-        <div class="input-group">
-            <select name="eGridSubregion" class="form-control" id="fuelType" formControlName="eGridSubregion"
-                (change)="setSubRegion()" (focus)="focusField('eGridSubregion')">
-                <option *ngFor="let option of subregions" [ngValue]="option.subregion">{{option.subregion}}</option>
-            </select>
-        </div>
-    </div>
-
     <div *ngIf="showEmissionRateInformation()" class="ml-3 p-3">
         <label class="group-label">Emission Rates</label>
+               <div class="form-group">
+            <label for="eGridRegion">eGrid Region</label>
+            <div class="input-group">
+                <select name="eGridRegion" class="form-control" id="eGridRegion" formControlName="eGridRegion"
+                    (change)="setRegion()" (focus)="focusField('eGridRegion')">
+                    <option *ngFor="let option of eGridRegions" [ngValue]="option.region">{{option.region}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div *ngIf="form.controls.eGridRegion.value != 'Other' && form.controls.eGridRegion.value != 'PV/Wind' "
+            class="form-group">
+            <label for="eGridSubregion">eGrid Subregion</label>
+            <div class="input-group">
+                <select name="eGridSubregion" class="form-control" id="fuelType" formControlName="eGridSubregion"
+                    (change)="setSubRegion()" (focus)="focusField('eGridSubregion')">
+                    <option *ngFor="let option of subregions" [ngValue]="option.subregion">{{option.subregion}}</option>
+                </select>
+            </div>
+        </div>
         <div *ngIf="form.controls.eGridRegion.value != 'Other'" class="d-flex w-100">
             <label class="w-50">
                 CO<sub>2</sub> Rate
@@ -105,14 +104,14 @@
                 <span class="input-group-addon units small">g N<sub>2</sub>O/MWh</span>
             </div>
         </div>
- <div class="d-flex w-100">
-        <label class="w-50">
-           Total Potential CO<sub>2</sub> Rate
-        </label>
-        <label class="w-50 text-center">
-            {{electricalCostAndEmissions.emissions | number:"0.0-2"}} tonne CO<sub>2</sub>/yr
-        </label>
-    </div>
+        <div class="d-flex w-100">
+            <label class="w-50">
+                Total Potential CO<sub>2</sub> Rate
+            </label>
+            <label class="w-50 text-center">
+                {{electricalCostAndEmissions.emissions | number:"0.0-2"}} tonne CO<sub>2</sub>/yr
+            </label>
+        </div>
 
 
     </div>
