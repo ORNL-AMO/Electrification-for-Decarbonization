@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, WritableSignal } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FuelEquipment, ResultsSummary } from '../models/calculationData';
 import { DataService } from '../services/data.service';
@@ -16,6 +16,8 @@ export class ResultsComponent implements OnInit {
   operatingHoursSub: Subscription;
   summarySub: Subscription;
   summary: ResultsSummary;
+  showEmissionRateInformation: WritableSignal<boolean> = this.dataService.showEmissionRateInformation;
+  
 
   constructor(private dataService: DataService) { }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, WritableSignal } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ElectricalEquipment } from '../models/calculationData';
@@ -25,6 +25,7 @@ export class ElectricalEquipmentFormComponent implements OnInit {
   electricalHeatInputSub: Subscription;
   electricalEquipmentSub: Subscription;
   isFormChangeUpdate: boolean = false;
+  showEmissionRateInformation: WritableSignal<boolean> = this.dataService.showEmissionRateInformation;
   constructor(private formBuilder: UntypedFormBuilder, private dataService: DataService) { }
 
   ngOnInit(): void {

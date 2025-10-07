@@ -34,24 +34,28 @@
                 {{summary.current.energyCost | currency: 'USD': 'symbol':'0.0-0'}} /yr
             </td>
         </tr>
-        <tr>
+        <ng-container *ngIf="showEmissionRateInformation()">
 
-            <td>
-                CO<sub>2</sub> Emissions
-            </td>
-            <td>
-                {{summary.current.co2Emissions | number:"0.0-0"}} MT CO<sub>2</sub>/yr
-            </td>
-        </tr>
-        <tr>
+            <tr>
 
-            <td>
-                CO<sub>2</sub>e Emissions
-            </td>
-            <td>
-                {{summary.current.co2EmissionsEquivelant | number:"0.0-0"}} MT CO<sub>2</sub>e/yr
-            </td>
-        </tr>
+                <td>
+                    CO<sub>2</sub> Rate
+                </td>
+                <td>
+                    {{summary.current.co2Emissions | number:"0.0-0"}} MT CO<sub>2</sub>/yr
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    CO<sub>2</sub>e Rate
+                </td>
+                <td>
+                    {{summary.current.co2EmissionsEquivelant | number:"0.0-0"}} MT CO<sub>2</sub>e/yr
+                </td>
+            </tr>
+        </ng-container>
+
     </tbody>
 </table>
 
@@ -85,24 +89,27 @@
                 {{summary.potential.energyCost | currency: 'USD': 'symbol':'0.0-0'}} /yr
             </td>
         </tr>
-        <tr>
+        <ng-container *ngIf="showEmissionRateInformation()">
 
-            <td>
-                CO<sub>2</sub> Emissions
-            </td>
-            <td>
-                {{summary.potential.co2Emissions | number:"0.0-0"}} MT CO<sub>2</sub>/yr
-            </td>
-        </tr>
-        <tr>
+            <tr>
 
-            <td>
-                CO<sub>2</sub>e Emissions
-            </td>
-            <td>
-                {{summary.potential.co2EmissionsEquivelant | number:"0.0-0"}} MT CO<sub>2e</sub>/yr
-            </td>
-        </tr>
+                <td>
+                    CO<sub>2</sub> Rate
+                </td>
+                <td>
+                    {{summary.potential.co2Emissions | number:"0.0-0"}} MT CO<sub>2</sub>/yr
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    CO<sub>2</sub>e Rate
+                </td>
+                <td>
+                    {{summary.potential.co2EmissionsEquivelant | number:"0.0-0"}} MT CO<sub>2e</sub>/yr
+                </td>
+            </tr>
+        </ng-container>
     </tbody>
 </table>
 
@@ -143,24 +150,6 @@
             </td>
             <td>
                 {{summary.impact.energyCost | currency: 'USD': 'symbol':'0.0-0'}} /yr
-            </td>
-        </tr>
-        <tr>
-
-            <td>
-                CO<sub>2</sub> Reduction
-            </td>
-            <td>
-                {{summary.impact.co2Emissions | number:"0.0-0"}} MT CO<sub>2</sub>/yr
-            </td>
-        </tr>
-        <tr>
-
-            <td>
-                CO<sub>2</sub>e Reduction
-            </td>
-            <td>
-                {{summary.impact.co2EmissionsEquivelant | number:"0.0-0"}} MT CO<sub>2</sub>e/yr
             </td>
         </tr>
     </tbody>
